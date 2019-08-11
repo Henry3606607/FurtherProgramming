@@ -36,7 +36,7 @@ public class SimplePlayer implements Player {
 
     @Override
     public void setPoints(int points) {
-    this.points = points;
+    this.points += points;
     }
 
     @Override

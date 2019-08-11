@@ -1,6 +1,7 @@
 package model;
 
 import model.enumeration.BetType;
+import model.interfaces.Coin;
 import model.interfaces.CoinPair;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
@@ -22,18 +23,60 @@ public class GameEngineImpl implements GameEngine {
         player.getResult()
                 .getCoin1()
                 .flip();
+        updatePlayer(player, player.getResult().getCoin1());
 
         //delay2
         player.getResult()
                 .getCoin2()
                 .flip();
-        //playerCoinUpdate()
-        //player result();
+        updatePlayer(player, player.getResult().getCoin2());
+
+        playerResult(player); //dunno if right here
+    }
+
+    private void playerResult(Player player){
+        for (GameEngineCallback gameEngineCallback : gameEngineCallbacks) {
+            gameEngineCallback.playerResult(player, player.getResult(), this);
+        }
+    }
+
+    private void updatePlayer(Player player, Coin coin){
+        for (GameEngineCallback gameEngineCallback : gameEngineCallbacks) {
+            gameEngineCallback.playerCoinUpdate(player, coin, this);
+        }
+    }
+
+    private void spinnerCoinUpdate(Coin coin){
+        for (GameEngineCallback gameEngineCallback : gameEngineCallbacks) {
+            gameEngineCallback.spinnerCoinUpdate(coin, this);
+        }
+    }
+
+    private void spinnerResult(CoinPair cp){
+        for (GameEngineCallback gameEngineCallback : gameEngineCallbacks) {
+            gameEngineCallback.spinnerResult(cp, this);
+        }
+    }
+
+    public void spinSpinner(int initialDelay1, int finalDelay1, int delayIncrement1,
+                            int initialDelay2, int finalDelay2, int delayIncrement2) throws IllegalArgumentException{
+        CoinPair cp = new CoinPairImpl();
+        cp.getCoin1().flip();
+        this.spinnerCoinUpdate(cp.getCoin1());
+
+        cp.getCoin2().flip();
+        this.spinnerCoinUpdate(cp.getCoin2());
+
+        applyBetResults(cp);
+        this.spinnerResult(cp);
     }
 
     @Override
     public void applyBetResults(CoinPair spinnerResult) {
-
+        for (Player player : players) {
+            player.getBetType().applyWinLoss(player, spinnerResult);
+            playerResult(player);
+        }
     }
 
     @Override
@@ -85,9 +128,6 @@ public class GameEngineImpl implements GameEngine {
         return false;
     }
 
-    public void spinSpinner(int initialDelay1, int finalDelay1, int delayIncrement1,
-                            int initialDelay2, int finalDelay2, int delayIncrement2) throws IllegalArgumentException{
 
-    }
 
 }
