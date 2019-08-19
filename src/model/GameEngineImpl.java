@@ -18,20 +18,19 @@ public class GameEngineImpl implements GameEngine {
 
     @Override
     public void spinPlayer(Player player, int initialDelay1, int finalDelay1, int delayIncrement1, int initialDelay2, int finalDelay2, int delayIncrement2) throws IllegalArgumentException {
+
         player.setResult(new CoinPairImpl());
         //delay
         player.getResult()
                 .getCoin1()
                 .flip();
-        updatePlayer(player, player.getResult().getCoin1());
+        this.updatePlayer(player, player.getResult().getCoin1());
 
         //delay2
         player.getResult()
                 .getCoin2()
                 .flip();
-        updatePlayer(player, player.getResult().getCoin2());
-
-        playerResult(player); //dunno if right here
+        this.updatePlayer(player, player.getResult().getCoin2());
     }
 
     private void playerResult(Player player){
@@ -71,11 +70,16 @@ public class GameEngineImpl implements GameEngine {
         this.spinnerResult(cp);
     }
 
+    public void resetPlayers(){
+        for (Player player : players) {
+            player.resetBet();
+        }
+    }
+
     @Override
     public void applyBetResults(CoinPair spinnerResult) {
         for (Player player : players) {
             player.getBetType().applyWinLoss(player, spinnerResult);
-            playerResult(player);
         }
     }
 
@@ -125,6 +129,11 @@ public class GameEngineImpl implements GameEngine {
 
     @Override
     public boolean placeBet(Player player, int bet, BetType betType) {
+        if(player.setBet(bet)) {
+            player.setBetType(betType);
+            return true;
+        }
+        player.setBetType(BetType.NO_BET);
         return false;
     }
 

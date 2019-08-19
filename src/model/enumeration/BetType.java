@@ -13,6 +13,11 @@ public enum BetType {
 
     COIN1 {
         @Override
+        public String toString() {
+            return "COIN1";
+        }
+
+        @Override
         public void applyWinLoss(Player player, CoinPair spinnerResult) {
             if(player.getResult().getCoin1().equals(spinnerResult.getCoin1())){
                 player.setPoints(player.getBet());
@@ -20,10 +25,13 @@ public enum BetType {
             else{
                 player.setPoints(-player.getBet());
             }
-            player.resetBet();
         }
     },
     COIN2 {
+        @Override
+        public String toString() {
+            return "COIN2";
+        }
         @Override
         public void applyWinLoss(Player player, CoinPair spinnerResult) {
             if(player.getResult().getCoin2().equals(spinnerResult.getCoin2())){
@@ -32,10 +40,13 @@ public enum BetType {
             else{
                 player.setPoints(-player.getBet());
             }
-            player.resetBet();
         }
     },
     BOTH {
+        @Override
+        public String toString() {
+            return "BOTH";
+        }
         @Override
         public void applyWinLoss(Player player, CoinPair spinnerResult) {
             if(player.getResult().getCoin1().equals(spinnerResult.getCoin1()) &&
@@ -45,13 +56,15 @@ public enum BetType {
             else{
                 player.setPoints(-player.getBet());
             }
-            player.resetBet();
         }
     },
     NO_BET {
         @Override
+        public String toString() {
+            return "NO_BET";
+        }
+        @Override
         public void applyWinLoss(Player player, CoinPair spinnerResult) {
-            player.resetBet();
             return;
         }
     };
@@ -66,4 +79,6 @@ public enum BetType {
      * @param spinnerResult - the CoinPair result of the spinner to compare to
      */
     public abstract void applyWinLoss(Player player, CoinPair spinnerResult);
+
+    public abstract String toString();
 }

@@ -10,7 +10,7 @@ public class SimplePlayer implements Player {
     private String playerName;
     private int bet;
     private int points;
-    private BetType betType;
+    private BetType betType = BetType.NO_BET;
     private CoinPair result;
 
     public SimplePlayer(String playerId, String playerName, int points){
@@ -46,7 +46,11 @@ public class SimplePlayer implements Player {
 
     @Override
     public boolean setBet(int bet) {
-        //TODO bet logic
+        if(this.getPoints() - bet >= 0){
+            this.bet = bet;
+            this.setPoints(-bet);
+            return true;
+        }
         return false;
     }
 
@@ -69,7 +73,7 @@ public class SimplePlayer implements Player {
     public void resetBet() {
         //TODO no bet?
         this.bet = 0;
-        this.betType = null;
+        this.betType = BetType.NO_BET;
     }
 
     @Override
