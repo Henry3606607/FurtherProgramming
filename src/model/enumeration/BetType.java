@@ -51,7 +51,7 @@ public enum BetType {
         public void applyWinLoss(Player player, CoinPair spinnerResult) {
             if(player.getResult().getCoin1().equals(spinnerResult.getCoin1()) &&
                     player.getResult().getCoin2().equals(spinnerResult.getCoin2())){
-                player.setPoints(player.getBet() * player.getBet());
+                player.setPoints(player.getBet() * 2);
             }
             else{
                 player.setPoints(-player.getBet());

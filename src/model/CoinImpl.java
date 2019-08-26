@@ -6,7 +6,7 @@ import model.interfaces.Coin;
 public class CoinImpl implements Coin {
 
     private int number;
-    private CoinFace coinFace = CoinFace.HEADS;
+    private CoinFace coinFace =  (int) (Math.random() * ((1 - 0) + 1)) + 0 == 1 ? CoinFace.HEADS : CoinFace.TAILS;
 
     public CoinImpl(int number){
         this.number = number;
@@ -24,8 +24,7 @@ public class CoinImpl implements Coin {
 
     @Override
     public void flip() {
-        int flip = (int)(Math.random() * ((1 - 0) + 1)) + 0;
-        if(flip == 1){
+        if(this.coinFace.equals(coinFace.TAILS)){
             this.coinFace = CoinFace.HEADS;
         }
         else{

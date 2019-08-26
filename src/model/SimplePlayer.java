@@ -48,7 +48,6 @@ public class SimplePlayer implements Player {
     public boolean setBet(int bet) {
         if(this.getPoints() - bet >= 0){
             this.bet = bet;
-            this.setPoints(-bet);
             return true;
         }
         return false;

@@ -5,7 +5,6 @@ import model.interfaces.Coin;
 import model.interfaces.CoinPair;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
-import view.GameEngineCallbackImpl;
 import view.interfaces.GameEngineCallback;
 
 import java.util.ArrayList;
@@ -20,20 +19,55 @@ public class GameEngineImpl implements GameEngine {
     public void spinPlayer(Player player, int initialDelay1, int finalDelay1, int delayIncrement1, int initialDelay2, int finalDelay2, int delayIncrement2) throws IllegalArgumentException {
 
         player.setResult(new CoinPairImpl());
-        //delay
-        player.getResult()
-                .getCoin1()
-                .flip();
-        this.updatePlayer(player, player.getResult().getCoin1());
+        //initial delay is until first flip - slow down using delayIncrement and final delay is when hits table
+        boolean coin1Landed = false;
+        boolean coin2Landed = false;
+        int i = 0;
+        while(!coin1Landed && !coin2Landed){
+            if(this.flipPlayerCoin(player, player.getResult().getCoin1(), i, initialDelay1, delayIncrement1, finalDelay1)){
+                coin1Landed = true;
+            }
+            if(this.flipPlayerCoin(player, player.getResult().getCoin2(), i, initialDelay2, delayIncrement2, finalDelay2)){
+                coin2Landed = true;
+            }
+            i++;
+        }
+
+
+
 
         //delay2
-        player.getResult()
-                .getCoin2()
-                .flip();
-        this.updatePlayer(player, player.getResult().getCoin2());
+
+
+        this.playerResults(player);
     }
 
-    private void playerResult(Player player){
+    private boolean flipPlayerCoin(Player player, Coin coin, int iteration, int initialDelay, int delayIncrement, int finalDelay){
+        int concurrentDelay = initialDelay + (delayIncrement * iteration);
+        if(concurrentDelay > finalDelay) {
+            return true;
+        }
+        try {
+            //Thread.sleep(concurrentDelay);
+            Thread.sleep(1);
+            this.flipCallback(player, coin);
+
+        } catch (InterruptedException ie){
+            Thread.currentThread().interrupt();
+        }
+        return false;
+    }
+
+    private void flipCallback(Player player, Coin coin){
+        coin.flip();
+        this.updatePlayer(player, coin);
+    }
+
+    private void flipCoin(Coin coin){
+        coin.flip();
+    }
+
+    private void playerResults(Player player){
         for (GameEngineCallback gameEngineCallback : gameEngineCallbacks) {
             gameEngineCallback.playerResult(player, player.getResult(), this);
         }
@@ -57,6 +91,7 @@ public class GameEngineImpl implements GameEngine {
         }
     }
 
+    @Override
     public void spinSpinner(int initialDelay1, int finalDelay1, int delayIncrement1,
                             int initialDelay2, int finalDelay2, int delayIncrement2) throws IllegalArgumentException{
         CoinPair cp = new CoinPairImpl();
@@ -68,12 +103,6 @@ public class GameEngineImpl implements GameEngine {
 
         applyBetResults(cp);
         this.spinnerResult(cp);
-    }
-
-    public void resetPlayers(){
-        for (Player player : players) {
-            player.resetBet();
-        }
     }
 
     @Override
