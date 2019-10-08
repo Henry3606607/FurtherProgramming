@@ -1,13 +1,10 @@
 package view;
 
-import model.SimplePlayer;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class PlayerPanel extends JPanel {
     GameEngine gameEngine;
@@ -21,6 +18,8 @@ public class PlayerPanel extends JPanel {
 
     public void renderPlayers(){
         this.clear();
+
+        setBorder(BorderFactory.createTitledBorder("Players"));
 
         JPanel listPane = new JPanel();
         listPane.setLayout(new BoxLayout(listPane, BoxLayout.PAGE_AXIS));
@@ -37,7 +36,7 @@ public class PlayerPanel extends JPanel {
         listPane.add(newPlayerButton());
 
         for (Player p : gameEngine.getAllPlayers()) {
-            PlayerView pView = new PlayerView(p, gameEngine, this);
+            PlayerView pView = new PlayerView(p, gameEngine, this, parent);
             listPane.add(pView);
         }
 
@@ -52,9 +51,7 @@ public class PlayerPanel extends JPanel {
     }
 
     public void createNewPlayer(){
-        NewPlayerPanel newPlayer = new NewPlayerPanel(this, gameEngine);
-        this.clear();
-        add(newPlayer);
+        NewPlayerDialog newPlayer = new NewPlayerDialog(parent, gameEngine);
         this.refresh();
     }
 

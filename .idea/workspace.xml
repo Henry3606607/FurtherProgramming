@@ -2,18 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d955e353-6af4-442e-8e49-9b94524be9ba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/controller/ButtonClickController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/Model.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/model/ModelImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/MVCTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/AddPlayerButton.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/AppFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/NewPlayerPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/PlayerBetView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/PlayerPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/PlayerView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/ErrorDialog.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/GameEngineCallbackGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/SpinPanel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/SummaryPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/NewPlayerPanel$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/NewPlayerPanel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/PlayerBetView$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/PlayerBetView$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/PlayerBetView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/PlayerPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/PlayerPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/PlayerView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/PlayerView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/PlayerView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/PlayerView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/AppFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/AppFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/NewPlayerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/NewPlayerDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/PlayerBetView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PlayerBetDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/PlayerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PlayerPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/PlayerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PlayerView.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -129,6 +136,8 @@
       <workItem from="1569546943259" duration="6080000" />
       <workItem from="1570237563561" duration="873000" />
       <workItem from="1570238535778" duration="8708000" />
+      <workItem from="1570446870642" duration="1616000" />
+      <workItem from="1570533421563" duration="5302000" />
     </task>
     <servers />
   </component>
@@ -157,8 +166,8 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/view/NewPlayerPanel.java</url>
-          <line>39</line>
+          <url>file://$PROJECT_DIR$/src/view/NewPlayerDialog.java</url>
+          <line>22</line>
           <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
