@@ -84,4 +84,9 @@ public class SimplePlayer implements Player {
     public void setResult(CoinPair coinPair) {
         this.result = coinPair;
     }
+
+    @Override
+    public String toString(){
+        return this.getPlayerName();
+    }
 }

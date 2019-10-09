@@ -2,6 +2,7 @@ package view;
 
 import model.GameEngineImpl;
 import model.interfaces.GameEngine;
+import model.interfaces.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,14 +10,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class AppFrame extends JFrame {
-    private GameEngine gameEngine = new GameEngineImpl();
+    private GameEngine gameEngine;
+    private GameEngineCallbackGUI callbackGUI = new GameEngineCallbackGUI();;
     private Container c = getContentPane();
+    private CoinPanel coinPanel;
     private PlayerPanel playerPanel;
     private JMenuBar menuBar;
     private JMenu menu;
     private JMenuItem playerView, spinnerView;
-    private JToolBar toolbar;
+    private ToolBar toolbar;
     private SummaryPanel summaryPanel;
+    private Player selectedPlayer;
 
 
 
@@ -26,11 +30,30 @@ public class AppFrame extends JFrame {
     {
         super("Assignment 2");
 
+        SwingUtilities.invokeLater(new Runnable()
+        {
+            @Override
+            public void run() {
+                gameEngine = new GameEngineImpl();
+                buildFrame();
+            }
+        });
+
+
+    }
+
+    public void buildFrame(){
+        gameEngine.addGameEngineCallback(callbackGUI);
+
         setBounds(100, 100, 640, 480);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
         playerPanel = new PlayerPanel(gameEngine, this);
+        callbackGUI.setPlayerPanel(playerPanel);
+
+        coinPanel = new CoinPanel(gameEngine, this);
+        callbackGUI.setCoinPanel(coinPanel);
         setVisible(true);
 
         render();
@@ -45,14 +68,14 @@ public class AppFrame extends JFrame {
             createPlayers();
         }
         else{
-            createSpinView();
+            createCoinView();
         }
 
         this.refresh();
     }
 
-    public void createSpinView(){
-        //c.add()
+    public void createCoinView(){
+        c.add(coinPanel, BorderLayout.WEST);
     }
 
     public void createSummaryPanel(){
@@ -61,19 +84,7 @@ public class AppFrame extends JFrame {
     }
 
     public void createToolBar(){
-        toolbar = new JToolBar();
-        JPanel p = new JPanel();
-        JButton spinButton = new JButton("Manual Spin");
-
-        spinButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                gameEngine.spinSpinner(100, 100, 100, 100,100,100);
-            }
-        });
-
-        p.add(spinButton);
-        toolbar.add(p);
+        toolbar = new ToolBar(gameEngine, AppFrame.this);
         c.add(toolbar, BorderLayout.NORTH);
     }
 
@@ -99,6 +110,12 @@ public class AppFrame extends JFrame {
 
     public void setCurrentView(String currentView) {
         this.currentView = currentView;
+    }
+
+    public void selectPlayer(Player player){
+        setSelectedPlayer(player);
+        coinPanel.setCurrentPlayer(player);
+        coinPanel.renderCoins();
     }
 
     public void createMenu(){
@@ -127,5 +144,13 @@ public class AppFrame extends JFrame {
         menu.add(spinnerView);
         menuBar.add(menu);
         setJMenuBar(menuBar);
+    }
+
+    public Player getSelectedPlayer() {
+        return selectedPlayer;
+    }
+
+    public void setSelectedPlayer(Player selectedPlayer) {
+        this.selectedPlayer = selectedPlayer;
     }
 }

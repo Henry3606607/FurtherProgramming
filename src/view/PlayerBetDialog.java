@@ -46,14 +46,14 @@ public class PlayerBetDialog {
         panel.add(placeBetlabel);
         panel.add(betText);
 
-        String[] petStrings = {BetType.NO_BET.toString(),
+        String[] betTypes = {BetType.NO_BET.toString(),
                 BetType.BOTH.toString(),
                 BetType.COIN1.toString(),
                 BetType.COIN2.toString()};
 
         //Create the combo box, select item at index 4.
         //Indices start at 0, so 4 specifies the pig.
-        JComboBox betTypeCombo = new JComboBox(petStrings);
+        JComboBox betTypeCombo = new JComboBox(betTypes);
         betTypeCombo.setSelectedIndex(0);
         panel.add(betTypeCombo);
 
