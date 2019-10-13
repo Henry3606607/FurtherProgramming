@@ -1,7 +1,6 @@
 package view;
 
-import controller.GameEngineController;
-import model.GameEngineImpl;
+import model.enumeration.BetType;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
 
@@ -12,14 +11,14 @@ import java.awt.event.ActionListener;
 
 public class AppFrame extends JFrame {
     private GameEngine gameEngine;
-    private GameEngineCallbackGUI callbackGUI = new GameEngineCallbackGUI();;
     private Container c = getContentPane();
-    private CoinPanel coinPanel;
+    private SpinnerView spinnerView;
     private PlayerPanel playerPanel;
     private JMenuBar menuBar;
     private JMenu menu;
-    private JMenuItem playerView, spinnerView;
-    private ToolBar toolbar;
+    private JMenuItem playerViewItem, spinViewItem;
+    private StatusBar statusBar;
+    private ToolBar toolBar;
     private SummaryPanel summaryPanel;
     private Player selectedPlayer;
 
@@ -27,30 +26,31 @@ public class AppFrame extends JFrame {
 
     private String currentView = "player";
 
-    public AppFrame()
+    public AppFrame(GameEngine gameEngine)
     {
         super("Assignment 2");
-
-        GameEngineController gameEngineController = new GameEngineController();
-        gameEngineController.start();
-        this.gameEngine = gameEngineController.getGameEngine();
+        this.gameEngine = gameEngine;
 
         this.buildFrame();
     }
 
     public void buildFrame(){
-        gameEngine.addGameEngineCallback(callbackGUI);
+
 
         setBounds(100, 100, 640, 480);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        playerPanel = new PlayerPanel(gameEngine, this);
-        callbackGUI.setPlayerPanel(playerPanel);
+        statusBar = new StatusBar();
+        spinnerView = new SpinnerView(gameEngine, this);
+        summaryPanel = new SummaryPanel(gameEngine, this);
+        playerPanel = new PlayerPanel(gameEngine, this, summaryPanel);
+        toolBar = new ToolBar(gameEngine, AppFrame.this);
 
-        coinPanel = new CoinPanel(gameEngine, this);
-        callbackGUI.setCoinPanel(coinPanel);
+
         setVisible(true);
+
+        gameEngine.addGameEngineCallback(new GameEngineCallbackGUI(spinnerView, summaryPanel, this));
 
         render();
     }
@@ -58,36 +58,18 @@ public class AppFrame extends JFrame {
     public void render(){
         this.clear();
         this.createMenu();
-        this.createSummaryPanel();
-        this.createToolBar();
+        c.add(summaryPanel, BorderLayout.EAST);
+        c.add(toolBar, BorderLayout.NORTH);
         if(this.currentView.equals("player")){
-            createPlayers();
+            c.add(playerPanel, BorderLayout.WEST);
         }
         else{
-            createCoinView();
+            c.add(spinnerView, BorderLayout.WEST);
         }
 
+        c.add(statusBar, BorderLayout.SOUTH);
+
         this.refresh();
-    }
-
-    public void createCoinView(){
-        c.add(coinPanel, BorderLayout.WEST);
-    }
-
-    public void createSummaryPanel(){
-        summaryPanel = new SummaryPanel(gameEngine, this);
-        c.add(summaryPanel, BorderLayout.EAST);
-    }
-
-    public void createToolBar(){
-        toolbar = new ToolBar(gameEngine, AppFrame.this);
-        c.add(toolbar, BorderLayout.NORTH);
-    }
-
-    public void createPlayers()
-    {
-        c.add(playerPanel, BorderLayout.WEST);
-        playerPanel.renderPlayers();
     }
 
     public void clear(){
@@ -110,17 +92,17 @@ public class AppFrame extends JFrame {
 
     public void selectPlayer(Player player){
         setSelectedPlayer(player);
-        coinPanel.setCurrentPlayer(player);
-        coinPanel.renderCoins();
+        spinnerView.switchPlayer(player);
+        toolBar.isSpinPlayerButtonDisabled(false);
     }
 
     public void createMenu(){
         menuBar = new JMenuBar();
         menu = new JMenu("Menu");
-        playerView = new JMenuItem("Player View");
-        spinnerView = new JMenuItem("Spin View");
+        playerViewItem = new JMenuItem("Player View");
+        spinViewItem = new JMenuItem("Spin View");
 
-        playerView.addActionListener(new ActionListener() {
+        playerViewItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setCurrentView("player");
@@ -128,7 +110,7 @@ public class AppFrame extends JFrame {
             }
         });
 
-        spinnerView.addActionListener(new ActionListener() {
+        spinViewItem.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setCurrentView("spinner");
@@ -136,8 +118,8 @@ public class AppFrame extends JFrame {
             }
         });
 
-        menu.add(playerView);
-        menu.add(spinnerView);
+        menu.add(playerViewItem);
+        menu.add(spinViewItem);
         menuBar.add(menu);
         setJMenuBar(menuBar);
     }
@@ -148,5 +130,44 @@ public class AppFrame extends JFrame {
 
     public void setSelectedPlayer(Player selectedPlayer) {
         this.selectedPlayer = selectedPlayer;
+        statusBar.switchCurrentPlayer(selectedPlayer);
+        spinnerView.setCurrentPlayer(selectedPlayer);
+    }
+
+    public void canSpinnerSpin(){
+        for (Player p : gameEngine.getAllPlayers()) {
+           if(p.getBetType().equals(BetType.NO_BET)){
+              return;
+           }
+        }
+        toolBar.autoSpin();
+    }
+
+    public PlayerPanel getPlayerPanel() {
+        return playerPanel;
+    }
+
+    public void setPlayerPanel(PlayerPanel playerPanel) {
+        this.playerPanel = playerPanel;
+    }
+
+    public void newPlayerAdded(Player player){
+        this.toolBar.addNewPlayer(player);
+    }
+
+    public StatusBar getStatusBar() {
+        return statusBar;
+    }
+
+    public void setStatusBar(StatusBar statusBar) {
+        this.statusBar = statusBar;
+    }
+
+    public SpinnerView getSpinnerView() {
+        return spinnerView;
+    }
+
+    public void setSpinnerView(SpinnerView spinnerView) {
+        this.spinnerView = spinnerView;
     }
 }

@@ -31,18 +31,6 @@ public class GameEngineCallbackImpl implements GameEngineCallback
    public void spinnerResult(CoinPair coinPair, GameEngine engine) {
       logger.log(Level.INFO, String.format("Spinner, final result=Coin %d: %s, Coin %d: %s", coinPair.getCoin1().getNumber(), coinPair.getCoin1().getFace(),
               coinPair.getCoin2().getNumber(), coinPair.getCoin2().getFace()));
-
-      String finalResult = "";
-      for (Player p : engine.getAllPlayers()) {
-         finalResult += this.playerFinalResult(p);
-      }
-      logger.log(Level.INFO, String.format("Final Player Results%s", finalResult));
-   }
-
-   private String playerFinalResult(Player player){
-      return String.format("\nPlayer: id=%s, name=%s, bet=%d, betType=%s, points=%d, RESULT .. Coin 1: %s, Coin 2: %s",
-               player.getPlayerId(), player.getPlayerName(), player.getBet(), player.getBetType().toString(), player.getPoints(),
-              player.getResult().getCoin1().getFace(), player.getResult().getCoin2().getFace());
    }
 
    public GameEngineCallbackImpl()

@@ -1,78 +1,98 @@
 package view;
 
+import controller.SelectPlayerController;
+import controller.SpinPlayerController;
+import controller.SpinSpinnerController;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class ToolBar extends JToolBar {
     GameEngine gameEngine;
-    private AppFrame parent;
+    private AppFrame appFrame;
+    private JComboBox playerSelect;
+    private JButton spinPlayer = new JButton("Spin Player");
+    private JButton spinSpinnerButton;
 
-    public ToolBar(GameEngine engine, AppFrame parent){
+    public ToolBar(GameEngine engine, AppFrame appFrame) {
         this.gameEngine = engine;
-        this.parent = parent;
+        this.appFrame = appFrame;
         renderToolbar();
     }
 
-    public void renderToolbar(){
+    public void renderToolbar() {
         this.clear();
 
         JPanel p = new JPanel();
-        JButton spinButton = new JButton("Manual Spin");
 
-        spinButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                SwingUtilities.invokeLater(new Runnable()
-                {
-                    @Override
-                    public void run()
-                    {
-                        gameEngine.spinSpinner (100, 1000, 100, 50, 500, 50) ;
-                    }
-                });
-            }
-        });
+        playerSelect = new JComboBox();
 
-
-        JComboBox playerSelect = new JComboBox();
-
-        if(!gameEngine.getAllPlayers().isEmpty()){
+        if (!gameEngine.getAllPlayers().isEmpty()) {
             for (Player player : gameEngine.getAllPlayers()) {
                 playerSelect.addItem(player);
 
             }
         }
 
-        playerSelect.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                parent.selectPlayer((Player) playerSelect.getSelectedItem());
-            }
-        });
-        if(parent.getSelectedPlayer() == null){
+        playerSelect.addActionListener(new SelectPlayerController(appFrame, this));
+        if (appFrame.getSelectedPlayer() == null) {
             playerSelect.setSelectedIndex(-1);
         }
 
 
         add(playerSelect);
+        add(newPlayerButton());
 
-        p.add(spinButton);
+
+        spinSpinnerButton = new JButton("Spin Spinner");
+        spinSpinnerButton.addActionListener(new SpinSpinnerController(gameEngine, appFrame.getSpinnerView()));
+
+        spinPlayer.addActionListener(new SpinPlayerController(gameEngine, appFrame));
+        spinPlayer.setEnabled(appFrame.getSelectedPlayer() != null);
+
+        p.add(spinPlayer);
+        p.add(spinSpinnerButton);
         add(p);
 
         this.refresh();
     }
 
-    public void clear(){
+    public JButton newPlayerButton() {
+        JButton addPlayerButton = new AddPlayerButton("Add Player", appFrame.getPlayerPanel());
+        return addPlayerButton;
+    }
+
+
+    public void clear() {
         this.removeAll();
     }
 
-    public void refresh(){
+    public void refresh() {
         this.revalidate();
         this.repaint();
+    }
+
+    public JComboBox getPlayerSelect() {
+        return playerSelect;
+    }
+
+    public void setPlayerSelect(JComboBox playerSelect) {
+        this.playerSelect = playerSelect;
+    }
+
+    public void isSpinPlayerButtonDisabled(boolean isDisabled){
+        this.spinPlayer.setEnabled(!isDisabled);
+        this.refresh();
+    }
+
+    public void addNewPlayer(Player player){
+        playerSelect.addItem(player);
+        this.refresh();
+    }
+
+    public void autoSpin(){
+        spinSpinnerButton.doClick();
     }
 
 }

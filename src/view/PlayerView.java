@@ -1,5 +1,7 @@
 package view;
 
+import controller.CancelBetController;
+import controller.PlayerLeaveController;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
 
@@ -11,14 +13,12 @@ import java.awt.event.ActionListener;
 public class PlayerView extends JPanel {
     private Player player;
     GameEngine gameEngine;
-    PlayerPanel parent;
-    AppFrame mainFrame;
+    PlayerPanel playerPanel;
 
-    public PlayerView(Player player, GameEngine gameEngine, PlayerPanel parent, AppFrame mainFrame){
+    public PlayerView(Player player, GameEngine gameEngine, PlayerPanel playerPanel){
         this.player = player;
         this.gameEngine = gameEngine;
-        this.parent = parent;
-        this.mainFrame = mainFrame;
+        this.playerPanel = playerPanel;
 
         renderPlayer();
     }
@@ -42,14 +42,9 @@ public class PlayerView extends JPanel {
 
 
 
-        JButton removePlayerButton = new JButton("Delete Player");
-        removePlayerButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                gameEngine.removePlayer(player);
-                parent.renderPlayers();
-            }
-        });
+        JButton removePlayerButton = new JButton("Leave");
+        removePlayerButton.addActionListener(new PlayerLeaveController(gameEngine, this.player, playerPanel));
+
         this.createBetItems();
         listPane.add(removePlayerButton);
 
@@ -70,13 +65,7 @@ public class PlayerView extends JPanel {
             add(betType);
 
             JButton cancelBetButton = new JButton("Cancel bet");
-            cancelBetButton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    gameEngine.getPlayer(player.getPlayerId()).resetBet();
-                    //parent.renderPlayer();
-                }
-            });
+            cancelBetButton.addActionListener(new CancelBetController(gameEngine, player, this));
 
             add(cancelBetButton);
         }
@@ -85,12 +74,17 @@ public class PlayerView extends JPanel {
             createBetButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    PlayerBetDialog playerBetView = new PlayerBetDialog(mainFrame, player, gameEngine);
+                    PlayerBetDialog playerBetView = new PlayerBetDialog(playerPanel, player, gameEngine);
                 }
             });
             add(createBetButton);
         }
 
+    }
+
+    public void cancelBet(){
+        playerPanel.getSummaryPanel().cancelBet(player);
+        this.renderPlayer();
     }
 
     public void clear(){
@@ -100,5 +94,13 @@ public class PlayerView extends JPanel {
     public void refresh(){
         this.revalidate();
         this.repaint();
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }

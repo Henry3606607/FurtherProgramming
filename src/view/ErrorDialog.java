@@ -1,24 +1,18 @@
 package view;
 
-import model.SimplePlayer;
-import model.interfaces.GameEngine;
-import model.interfaces.Player;
-
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 public class ErrorDialog {
 
     private ArrayList<String> errors;
-    private JFrame parent;
+    private AppFrame parent;
     private JDialog dialog;
     private JPanel panel;
 
-    public ErrorDialog(JFrame parent, ArrayList<String> errors) {
+    public ErrorDialog(AppFrame parent, ArrayList<String> errors) {
         this.errors = errors;
         this.parent = parent;
 

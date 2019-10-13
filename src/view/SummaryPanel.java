@@ -11,6 +11,7 @@ public class SummaryPanel extends JPanel {
     GameEngine gameEngine;
     private GameEngineCallback callback;
     private AppFrame parent;
+    private JTextArea textArea = new JTextArea(20, 20);
 
     public SummaryPanel(GameEngine engine, AppFrame parent){
         this.gameEngine = engine;
@@ -21,37 +22,17 @@ public class SummaryPanel extends JPanel {
     public void render(){
         this.clear();
 
-        setBorder(BorderFactory.createTitledBorder("Summary Panel"));
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        JLabel title = new JLabel("Summary");
 
-        JPanel listPane = new JPanel();
-        listPane.setLayout(new BoxLayout(listPane, BoxLayout.PAGE_AXIS));
+        textArea.setLineWrap(true);
 
-        listPane.add(Box.createRigidArea(new Dimension(0,5)));
-        listPane.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+        JScrollPane scrollWheel = new JScrollPane(textArea);
+        scrollWheel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
-        JPanel summaryScroll = new JPanel();
-        summaryScroll.setLayout(new BoxLayout(summaryScroll, BoxLayout.LINE_AXIS));
-        summaryScroll.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
-        summaryScroll.add(Box.createHorizontalGlue());
-        summaryScroll.add(Box.createRigidArea(new Dimension(10, 0)));
-
-        JLabel label = new JLabel("Players:");
-        listPane.add(label);
-        for (Player player : gameEngine.getAllPlayers()) {
-            JLabel playerLabel = new JLabel("player "+player.getPlayerId() + ": " + player.getPlayerName());
-            JLabel currentBets = new JLabel("bet: "+player.getBetType() + " " + player.getBet());
-            JLabel status = new JLabel("result: "+player.getResult() + " " + (player.getPoints() - player.getBet()));
-            listPane.add(playerLabel);
-            listPane.add(currentBets);
-            listPane.add(status);
-        }
-
-
-        this.add(listPane, BorderLayout.CENTER);
-        this.add(summaryScroll, BorderLayout.PAGE_END);
-
-
-
+        textArea.setEditable(false);
+        add(title);
+        add(scrollWheel);
 
         this.refresh();
     }
@@ -63,6 +44,26 @@ public class SummaryPanel extends JPanel {
     public void refresh(){
         this.revalidate();
         this.repaint();
+    }
+
+    public void appendMessage(String message){
+        textArea.append(message + "\n");
+    }
+
+    public void printBetInformation(Player player){
+        appendMessage(String.format("%s place a bet of %d %s", player.getPlayerName(), player.getBet(), player.getBetType().toString()));
+    }
+
+    public void playerJoined(Player player){
+        appendMessage(String.format("%s has joined", player.getPlayerName()));
+    }
+
+    public void playerLeft(Player player){
+        appendMessage(String.format("%s has quit", player.getPlayerName()));
+    }
+
+    public void cancelBet(Player player){
+        appendMessage(String.format("%s has cancelled their bet", player.getPlayerName()));
     }
 
 }
