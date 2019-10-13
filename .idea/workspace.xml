@@ -2,25 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d955e353-6af4-442e-8e49-9b94524be9ba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/view/ToolBar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/controller/GameEngineController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/model/GameEngineImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/model/GameEngineImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/model/SimplePlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/model/SimplePlayer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame$3.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/GameEngineCallbackGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/GameEngineCallbackGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/PlayerBetDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/PlayerBetDialog.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/SpinPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/SummaryPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/SummaryPanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/GameEngineImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/GameEngineImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/SimplePlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SimplePlayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/AppFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/AppFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GameEngineCallbackGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameEngineCallbackGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/PlayerBetDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/PlayerBetDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/SpinPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/CoinPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/SummaryPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/SummaryPanel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,6 +49,7 @@
       <recent name="controller" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="controller" />
       <recent name="view" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -130,7 +120,8 @@
       <workItem from="1570238535778" duration="8708000" />
       <workItem from="1570446870642" duration="1616000" />
       <workItem from="1570533421563" duration="5302000" />
-      <workItem from="1570610215445" duration="10450000" />
+      <workItem from="1570610215445" duration="10818000" />
+      <workItem from="1570925343453" duration="749000" />
     </task>
     <servers />
   </component>

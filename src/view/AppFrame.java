@@ -1,5 +1,6 @@
 package view;
 
+import controller.GameEngineController;
 import model.GameEngineImpl;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
@@ -30,16 +31,11 @@ public class AppFrame extends JFrame {
     {
         super("Assignment 2");
 
-        SwingUtilities.invokeLater(new Runnable()
-        {
-            @Override
-            public void run() {
-                gameEngine = new GameEngineImpl();
-                buildFrame();
-            }
-        });
+        GameEngineController gameEngineController = new GameEngineController();
+        gameEngineController.start();
+        this.gameEngine = gameEngineController.getGameEngine();
 
-
+        this.buildFrame();
     }
 
     public void buildFrame(){
