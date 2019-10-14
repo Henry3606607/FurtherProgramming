@@ -1,8 +1,13 @@
 package view;
 
+import model.SimplePlayer;
 import model.enumeration.BetType;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
+import view.player.PlayerPanel;
+import view.summary.SpinnerView;
+import view.summary.SummaryPanel;
+import view.toolbar.ToolBar;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,7 +36,12 @@ public class AppFrame extends JFrame {
         super("Assignment 2");
         this.gameEngine = gameEngine;
 
+        gameEngine.addPlayer(new SimplePlayer("1", "The Coin Master", 1000));
+        gameEngine.addPlayer(new SimplePlayer("2", "The Loser", 750));
+
         this.buildFrame();
+
+        //TODO remove clear and refresh from components
     }
 
     public void buildFrame(){
@@ -143,6 +153,14 @@ public class AppFrame extends JFrame {
         toolBar.autoSpin();
     }
 
+    public void newBetPlaced(Player player){
+        playerPanel.addNewBet(player);
+        if(player.getPlayerId().equals(getSelectedPlayer().getPlayerId())){
+            statusBar.betPlaced(player);
+        }
+    }
+
+
     public PlayerPanel getPlayerPanel() {
         return playerPanel;
     }
@@ -169,5 +187,13 @@ public class AppFrame extends JFrame {
 
     public void setSpinnerView(SpinnerView spinnerView) {
         this.spinnerView = spinnerView;
+    }
+
+    public SummaryPanel getSummaryPanel() {
+        return summaryPanel;
+    }
+
+    public void setSummaryPanel(SummaryPanel summaryPanel) {
+        this.summaryPanel = summaryPanel;
     }
 }

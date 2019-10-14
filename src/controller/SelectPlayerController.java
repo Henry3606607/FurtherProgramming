@@ -2,7 +2,7 @@ package controller;
 
 import model.interfaces.Player;
 import view.AppFrame;
-import view.ToolBar;
+import view.toolbar.ToolBar;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

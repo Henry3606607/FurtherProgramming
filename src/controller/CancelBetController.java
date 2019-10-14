@@ -2,9 +2,7 @@ package controller;
 
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
-import view.AppFrame;
-import view.PlayerView;
-import view.ToolBar;
+import view.player.PlayerView;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

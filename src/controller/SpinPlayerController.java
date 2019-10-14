@@ -26,6 +26,7 @@ public class SpinPlayerController implements ActionListener {
                     gameEngine.spinPlayer(appFrame.getSelectedPlayer(), 100, 1000, 100, 50, 500, 50);
                 }
             }.start();
+            appFrame.getSummaryPanel().playerSpinning(appFrame.getSelectedPlayer());
         }
     }
 

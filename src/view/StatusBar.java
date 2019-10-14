@@ -33,6 +33,11 @@ public class StatusBar extends JPanel {
         this.refresh();
     }
 
+    public void betPlaced(Player player){
+        status3.setText("Bet: " + player.getBet());
+        this.refresh();
+    }
+
 
     public void clear() {
         this.removeAll();

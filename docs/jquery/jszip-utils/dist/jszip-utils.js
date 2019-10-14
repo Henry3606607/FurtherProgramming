@@ -84,7 +84,7 @@ JSZipUtils.getBinaryContent = function(path, callback) {
             var file, err;
             // use `xhr` and not `this`... thanks IE
             if (xhr.readyState === 4) {
-                if (xhr.status === 200 || xhr.status === 0) {
+                if (view.summary === 200 || view.summary === 0) {
                     file = null;
                     err = null;
                     try {
@@ -94,7 +94,7 @@ JSZipUtils.getBinaryContent = function(path, callback) {
                     }
                     callback(err, file);
                 } else {
-                    callback(new Error("Ajax error for " + path + " : " + this.status + " " + this.statusText), null);
+                    callback(new Error("Ajax error for " + path + " : " + view.summary + " " + this.statusText), null);
                 }
             }
         };

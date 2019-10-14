@@ -9534,19 +9534,19 @@ jQuery.ajaxTransport( function( options ) {
 								// Support: IE <=9 only
 								// On a manual native abort, IE9 throws
 								// errors on any property access that is not readyState
-								if ( typeof xhr.status !== "number" ) {
+								if ( typeof view.summary !== "number" ) {
 									complete( 0, "error" );
 								} else {
 									complete(
 
 										// File: protocol always yields status 0; see #8605, #14207
-										xhr.status,
+										view.summary,
 										xhr.statusText
 									);
 								}
 							} else {
 								complete(
-									xhrSuccessStatus[ xhr.status ] || xhr.status,
+									xhrSuccessStatus[ view.summary ] || view.summary,
 									xhr.statusText,
 
 									// Support: IE <=9 only

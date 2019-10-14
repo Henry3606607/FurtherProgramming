@@ -1,27 +1,24 @@
 package controller;
 
 import model.interfaces.GameEngine;
-import model.interfaces.Player;
+import view.player.NewPlayerDialog;
 import view.player.PlayerPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PlayerLeaveController implements ActionListener {
+public class AddPlayerButtonController implements ActionListener {
     private GameEngine gameEngine;
-    private Player player;
     private PlayerPanel playerPanel;
 
-
-    public PlayerLeaveController(GameEngine gameEngine, Player player, PlayerPanel playerPanel) {
+    public AddPlayerButtonController(GameEngine gameEngine, PlayerPanel playerPanel) {
         this.gameEngine = gameEngine;
-        this.player = player;
         this.playerPanel = playerPanel;
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        gameEngine.removePlayer(player);
-        playerPanel.removePlayer(player);
+        new NewPlayerDialog(playerPanel, gameEngine);
     }
 }

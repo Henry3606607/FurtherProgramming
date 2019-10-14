@@ -1,10 +1,12 @@
-package view;
+package view.toolbar;
 
+import controller.AddPlayerButtonController;
 import controller.SelectPlayerController;
 import controller.SpinPlayerController;
 import controller.SpinSpinnerController;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
+import view.AppFrame;
 
 import javax.swing.*;
 
@@ -46,7 +48,7 @@ public class ToolBar extends JToolBar {
 
 
         spinSpinnerButton = new JButton("Spin Spinner");
-        spinSpinnerButton.addActionListener(new SpinSpinnerController(gameEngine, appFrame.getSpinnerView()));
+        spinSpinnerButton.addActionListener(new SpinSpinnerController(gameEngine, appFrame.getSpinnerView(), appFrame.getSummaryPanel()));
 
         spinPlayer.addActionListener(new SpinPlayerController(gameEngine, appFrame));
         spinPlayer.setEnabled(appFrame.getSelectedPlayer() != null);
@@ -59,10 +61,10 @@ public class ToolBar extends JToolBar {
     }
 
     public JButton newPlayerButton() {
-        JButton addPlayerButton = new AddPlayerButton("Add Player", appFrame.getPlayerPanel());
+        JButton addPlayerButton = new JButton("Add Player");
+        addPlayerButton.addActionListener(new AddPlayerButtonController(gameEngine, appFrame.getPlayerPanel()));
         return addPlayerButton;
     }
-
 
     public void clear() {
         this.removeAll();

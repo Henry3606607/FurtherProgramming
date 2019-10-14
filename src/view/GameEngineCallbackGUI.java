@@ -1,12 +1,15 @@
 package view;
 
+import model.enumeration.BetType;
 import model.interfaces.Coin;
 import model.interfaces.CoinPair;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
 import view.interfaces.GameEngineCallback;
+import view.summary.SpinnerView;
+import view.summary.SummaryPanel;
 
-import java.util.logging.Level;
+import java.util.ArrayList;
 
 public class GameEngineCallbackGUI implements GameEngineCallback {
     private SpinnerView spinnerView;
@@ -41,26 +44,18 @@ public class GameEngineCallbackGUI implements GameEngineCallback {
 
     @Override
     public void playerResult(Player player, CoinPair coinPair, GameEngine engine) {
-        summaryPanel.appendMessage(String.format("%s, final result=Coin %d: %s, Coin %d: %s", player.getPlayerName(), coinPair.getCoin1().getNumber(), coinPair.getCoin1().getFace(),
-                coinPair.getCoin2().getNumber(), coinPair.getCoin2().getFace()));
-
+        summaryPanel.playerResult(player);
         this.appFrame.canSpinnerSpin();
     }
 
     @Override
     public void spinnerResult(CoinPair coinPair, GameEngine engine) {
-        summaryPanel.appendMessage(String.format("Spinner, final result=Coin %d: %s, Coin %d: %s", coinPair.getCoin1().getNumber(), coinPair.getCoin1().getFace(),
-                coinPair.getCoin2().getNumber(), coinPair.getCoin2().getFace()));
-
-        String finalResult = "";
+        ArrayList<Player> finalPlayers = new ArrayList<>();
         for (Player p : engine.getAllPlayers()) {
-            finalResult += this.playerFinalResult(p);
+            if(!p.getBetType().equals(BetType.NO_BET)){
+                finalPlayers.add(p);
+            }
         }
-    }
-
-    private String playerFinalResult(Player player){
-        return String.format("\nPlayer: id=%s, name=%s, bet=%d, betType=%s, points=%d, RESULT .. Coin 1: %s, Coin 2: %s",
-                player.getPlayerId(), player.getPlayerName(), player.getBet(), player.getBetType().toString(), player.getPoints(),
-                player.getResult().getCoin1().getFace(), player.getResult().getCoin2().getFace());
+        summaryPanel.finalResults(finalPlayers, coinPair);
     }
 }

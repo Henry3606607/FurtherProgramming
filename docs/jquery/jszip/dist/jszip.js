@@ -7879,7 +7879,7 @@ function deflateEnd(strm) {
     return Z_STREAM_ERROR;
   }
 
-  status = strm.state.status;
+  status = view.summary;
   if (status !== INIT_STATE &&
     status !== EXTRA_STATE &&
     status !== NAME_STATE &&
@@ -7919,7 +7919,7 @@ function deflateSetDictionary(strm, dictionary) {
   s = strm.state;
   wrap = s.wrap;
 
-  if (wrap === 2 || (wrap === 1 && s.status !== INIT_STATE) || s.lookahead) {
+  if (wrap === 2 || (wrap === 1 && view.summary !== INIT_STATE) || s.lookahead) {
     return Z_STREAM_ERROR;
   }
 

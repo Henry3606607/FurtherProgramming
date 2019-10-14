@@ -3,9 +3,9 @@ package controller;
 import model.enumeration.BetType;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
+import view.AppFrame;
 import view.ErrorDialog;
-import view.PlayerBetDialog;
-import view.PlayerPanel;
+import view.player.PlayerBetDialog;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -16,38 +16,49 @@ public class PlaceBetController implements ActionListener {
     private GameEngine gameEngine;
     private PlayerBetDialog playerBetDialog;
     private JDialog dialog;
-    private PlayerPanel playerPanel;
+    private AppFrame appFrame;
+    private ArrayList<String> errors = new ArrayList<>();
 
-    public PlaceBetController(GameEngine gameEngine, PlayerBetDialog playerBetDialog, JDialog dialog, PlayerPanel playerPanel) {
+    public PlaceBetController(GameEngine gameEngine, PlayerBetDialog playerBetDialog, JDialog dialog, AppFrame appFrame) {
         this.gameEngine = gameEngine;
         this.playerBetDialog = playerBetDialog;
         this.dialog = dialog;
-        this.playerPanel = playerPanel;
+        this.appFrame = appFrame;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        ArrayList<String> errors = new ArrayList<>();
-        if (playerBetDialog.getBetText().getText().isBlank()) {
-            errors.add("bet value is required");
-        }
-        if (playerBetDialog.getBetTypeCombo().getSelectedItem() == null) {
-            errors.add("Bet type is required");
-        }
-        if (errors.isEmpty()) {
-            try {
-                //TODO check if enough points
-
-
-                gameEngine.placeBet(playerBetDialog.getPlayer(), Integer.valueOf(playerBetDialog.getBetText().getText()), BetType.valueOf((String) playerBetDialog.getBetTypeCombo().getSelectedItem()));
-                dialog.setVisible(false);
-                playerPanel.addNewBet(playerBetDialog.getPlayer());
-            } catch (NumberFormatException numberFormat) {
-                errors.add("Bet must be of type Integer");
-                ErrorDialog errorDialog = new ErrorDialog(playerPanel.getAppFrame(), errors);
-            }
+        Player player = playerBetDialog.getPlayer();
+        if (isBetValid(player, playerBetDialog.getBetText().getText(), BetType.valueOf((String) playerBetDialog.getBetTypeCombo().getSelectedItem()))) {
+            gameEngine.placeBet(player, Integer.valueOf(playerBetDialog.getBetText().getText()), BetType.valueOf((String) playerBetDialog.getBetTypeCombo().getSelectedItem()));
+            dialog.setVisible(false);
+            appFrame.newBetPlaced(player);
         } else {
-            ErrorDialog errorDialog = new ErrorDialog(playerPanel.getAppFrame(), errors);
+            new ErrorDialog(appFrame, errors);
         }
     }
-}
+
+        public boolean isBetValid (Player player, String betText, BetType type){
+            if (!betText.isBlank()) {
+                int bet;
+                try {
+                    bet = Integer.valueOf(betText);
+                    if (bet > 0) {
+                        if (player.getPoints() >= bet) {
+                            return true;
+                        } else {
+                            errors.add("Player does not have enough points");
+                        }
+                    } else {
+                        errors.add("Bet must be greater then 0");
+                    }
+                } catch (NumberFormatException numberFormat) {
+                    errors.add("Bet must be of type Integer");
+                }
+            }
+            else{
+                errors.add("Bet amount is required");
+            }
+            return false;
+        }
+    }

@@ -4,9 +4,8 @@ import model.SimplePlayer;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
 import view.ErrorDialog;
-import view.NewPlayerDialog;
-import view.PlayerPanel;
-import view.ToolBar;
+import view.player.NewPlayerDialog;
+import view.player.PlayerPanel;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -43,7 +42,7 @@ public class AddNewPlayerController implements ActionListener {
                 dialog.setVisible(false);
                 playerPanel.addNewPlayer(newPlayer);
             } catch (NumberFormatException numberFormat) {
-                errors.add("Bet must be of type Integer");
+                errors.add("Points must be of type Integer");
                 ErrorDialog errorDialog = new ErrorDialog(playerPanel.getAppFrame(), errors);
             }
         } else {

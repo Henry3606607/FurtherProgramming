@@ -26,29 +26,17 @@ public class PlayerView extends JPanel {
     public void renderPlayer(){
         this.clear();
 
-        JPanel listPane = new JPanel();
-        listPane.setLayout(new BoxLayout(listPane, BoxLayout.PAGE_AXIS));
-
-        listPane.add(Box.createRigidArea(new Dimension(0,5)));
-        listPane.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
-
         setBorder(BorderFactory.createTitledBorder(player.getPlayerName()));
 
         JLabel points = new JLabel(Integer.toString(player.getPoints()));
         JLabel pointsLabel = new JLabel("Points: ");
         add(pointsLabel);
         add(points);
-
-
-
-
         JButton removePlayerButton = new JButton("Leave");
         removePlayerButton.addActionListener(new PlayerLeaveController(gameEngine, this.player, playerPanel));
 
         this.createBetItems();
-        listPane.add(removePlayerButton);
-
-        this.add(listPane, BorderLayout.CENTER);
+        add(removePlayerButton);
         this.refresh();
     }
 
@@ -68,6 +56,7 @@ public class PlayerView extends JPanel {
             cancelBetButton.addActionListener(new CancelBetController(gameEngine, player, this));
 
             add(cancelBetButton);
+            setLayout(new GridLayout(4, 2));
         }
         else{
             JButton createBetButton = new JButton("Add Bet");
@@ -78,6 +67,7 @@ public class PlayerView extends JPanel {
                 }
             });
             add(createBetButton);
+            setLayout(new GridLayout(2, 2));
         }
 
     }

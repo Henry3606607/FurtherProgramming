@@ -2283,7 +2283,7 @@ $.widget( "ui.autocomplete", {
 		});
 
 		this.liveRegion = $( "<span>", {
-				role: "status",
+				role: "summary",
 				"aria-live": "assertive",
 				"aria-relevant": "additions"
 			})

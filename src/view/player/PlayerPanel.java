@@ -4,6 +4,7 @@ import model.interfaces.GameEngine;
 import model.interfaces.Player;
 
 import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class PlayerPanel extends JPanel {
@@ -11,6 +12,7 @@ public class PlayerPanel extends JPanel {
     private AppFrame parent;
     private SummaryPanel summaryPanel;
     private ArrayList<PlayerView> playerViews = new ArrayList<>();
+    private JPanel allPlayersPanel;
 
     public PlayerPanel(GameEngine engine, AppFrame parent, SummaryPanel summaryPanel){
         this.gameEngine = engine;
@@ -22,9 +24,20 @@ public class PlayerPanel extends JPanel {
     public void renderPlayers(){
         this.clear();
 
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        JLabel title = new JLabel("All Players");
+
+        allPlayersPanel = new JPanel();
+
+        JScrollPane scrollWheel = new JScrollPane(allPlayersPanel);
+        scrollWheel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        allPlayersPanel.setLayout(new GridLayout(100, 1));
+
         setBorder(BorderFactory.createTitledBorder("Players"));
 
         createAllPlayers();
+        add(scrollWheel);
+
         this.refresh();
     }
 
@@ -32,7 +45,7 @@ public class PlayerPanel extends JPanel {
         for (Player p : gameEngine.getAllPlayers()) {
             PlayerView pView = new PlayerView(p, gameEngine, this);
             playerViews.add(pView);
-            add(pView);
+            allPlayersPanel.add(pView);
         }
     }
 
@@ -50,7 +63,7 @@ public class PlayerPanel extends JPanel {
     public void addNewPlayer(Player player){
         PlayerView pView = new PlayerView(player, gameEngine, this);
         playerViews.add(pView);
-        add(pView);
+        allPlayersPanel.add(pView);
         getAppFrame().newPlayerAdded(player);
         summaryPanel.playerJoined(player);
         this.refresh();
@@ -75,8 +88,6 @@ public class PlayerPanel extends JPanel {
                 p.renderPlayer();
             }
         }
-
-        summaryPanel.printBetInformation(player);
     }
 
     public SummaryPanel getSummaryPanel() {

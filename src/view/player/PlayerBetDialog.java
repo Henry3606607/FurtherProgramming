@@ -46,7 +46,7 @@ public class PlayerBetDialog {
         panel.add(placeBetlabel);
         panel.add(betText);
 
-        String[] betTypes = {BetType.NO_BET.toString(),
+        String[] betTypes = {
                 BetType.BOTH.toString(),
                 BetType.COIN1.toString(),
                 BetType.COIN2.toString()};
@@ -58,7 +58,7 @@ public class PlayerBetDialog {
         panel.add(betTypeCombo);
 
         JButton placeBetButton = new JButton("Place new bet");
-        placeBetButton.addActionListener(new PlaceBetController(gameEngine, this, dialog, playerPanel));
+        placeBetButton.addActionListener(new PlaceBetController(gameEngine, this, dialog, playerPanel.getAppFrame()));
 
         panel.add(placeBetButton);
     }
