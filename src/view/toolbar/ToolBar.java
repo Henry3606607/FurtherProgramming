@@ -48,7 +48,7 @@ public class ToolBar extends JToolBar {
 
 
         spinSpinnerButton = new JButton("Spin Spinner");
-        spinSpinnerButton.addActionListener(new SpinSpinnerController(gameEngine, appFrame.getSpinnerView(), appFrame.getSummaryPanel()));
+        spinSpinnerButton.addActionListener(new SpinSpinnerController(gameEngine, appFrame));
 
         spinPlayer.addActionListener(new SpinPlayerController(gameEngine, appFrame));
         spinPlayer.setEnabled(appFrame.getSelectedPlayer() != null);
@@ -73,6 +73,14 @@ public class ToolBar extends JToolBar {
     public void refresh() {
         this.revalidate();
         this.repaint();
+    }
+
+    public void spinnerSpinning(){
+        spinSpinnerButton.setEnabled(false);
+    }
+
+    public void spinnerFinished(){
+        spinSpinnerButton.setEnabled(true);
     }
 
     public JComboBox getPlayerSelect() {

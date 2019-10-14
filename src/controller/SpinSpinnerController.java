@@ -2,6 +2,7 @@ package controller;
 
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
+import view.AppFrame;
 import view.summary.SpinnerView;
 import view.summary.SummaryPanel;
 
@@ -13,15 +14,13 @@ import java.util.Collection;
 public class SpinSpinnerController implements ActionListener {
     private GameEngine gameEngine;
     private Collection<Player> players;
-    private SpinnerView spinnerView;
-    private SummaryPanel summaryPanel;
+    private AppFrame appFrame;
 
 
-    public SpinSpinnerController(GameEngine gameEngine, SpinnerView spinnerView, SummaryPanel summaryPanel) {
+    public SpinSpinnerController(GameEngine gameEngine, AppFrame appFrame) {
         this.gameEngine = gameEngine;
         this.players = gameEngine.getAllPlayers();
-        this.spinnerView = spinnerView;
-        this.summaryPanel = summaryPanel;
+        this.appFrame = appFrame;
     }
 
     @Override
@@ -34,8 +33,8 @@ public class SpinSpinnerController implements ActionListener {
                         gameEngine.spinSpinner(100, 1000, 100, 50, 500, 50);
                     }
                 }.start();
-                summaryPanel.spinnerSpinning();
-                spinnerView.switchToSpinnerView();
+                appFrame.spinnerSpinning();
+
             }
         }
     }

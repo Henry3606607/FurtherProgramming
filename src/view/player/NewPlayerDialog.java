@@ -49,7 +49,6 @@ public class NewPlayerDialog {
         JButton createPlayer = new JButton("Add");
         createPlayer.addActionListener(new AddNewPlayerController(gameEngine, this, playerPanel, dialog));
 
-
         panel.add(createPlayer);
     }
 

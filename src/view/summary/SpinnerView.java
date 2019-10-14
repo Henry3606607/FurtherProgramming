@@ -10,6 +10,7 @@ import view.AppFrame;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class SpinnerView extends JPanel {
     private Player currentPlayer;
@@ -17,9 +18,11 @@ public class SpinnerView extends JPanel {
     private Coin coin2 = new CoinImpl(2);
     private JLabel coin1Face;
     private JLabel coin2Face;
+    private Dimension mainFrameDimensions = new Dimension(100, 100);
 
-    private ImageIcon heads = new ImageIcon("img/heads.png");
-    private ImageIcon tails = new ImageIcon("img/tails.png");
+
+    private ImageIcon heads = getScaledImage(".img/heads.png");
+    private ImageIcon tails = getScaledImage(".img/tails.png");
 
     private CurrentView currentView = CurrentView.SPINNER;
 
@@ -46,11 +49,25 @@ public class SpinnerView extends JPanel {
         this.refresh();
     }
 
-    public ImageIcon getImage(CoinFace face){
+    public String getImage(CoinFace face){
         if(face.equals(CoinFace.TAILS)){
-            return this.tails;
+            return "img/tails.png";
         }
-        return this.heads;
+        return "img/heads.png";
+    }
+
+    private ImageIcon getScaledImage(String imageUrl){
+        ImageIcon imageIcon = new ImageIcon(imageUrl);
+        Image image = imageIcon.getImage();
+        int width = (int) mainFrameDimensions.getWidth() /4;
+        int height = (int) mainFrameDimensions.getHeight()/4;
+        Image newimg = image.getScaledInstance(width * 420 / 420, height * 420 / 420,  java.awt.Image.SCALE_SMOOTH);
+        return new ImageIcon(newimg);
+    }
+
+    public void resizeCoins(Dimension dimension){
+        this.mainFrameDimensions = dimension;
+        this.renderCoins();
     }
 
     public void switchPlayer(Player player){
@@ -72,8 +89,8 @@ public class SpinnerView extends JPanel {
     }
 
     public void renderCoins(){
-        coin1Face.setIcon((getImage(this.getCoin1().getFace())));
-        coin2Face.setIcon((getImage(this.getCoin2().getFace())));
+        coin1Face.setIcon(getScaledImage(getImage(this.getCoin1().getFace())));
+        coin2Face.setIcon(getScaledImage(getImage(this.getCoin2().getFace())));
         this.refresh();
     }
 

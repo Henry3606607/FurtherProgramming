@@ -37,7 +37,7 @@ public class AddNewPlayerController implements ActionListener {
         }
         if (errors.isEmpty()) {
             try {
-                Player newPlayer = new SimplePlayer("1", newPlayerDialog.getName().getText(), Integer.valueOf(newPlayerDialog.getPoints().getText()));
+                Player newPlayer = new SimplePlayer(Integer.toString(gameEngine.getAllPlayers().size() + 1), newPlayerDialog.getName().getText(), Integer.valueOf(newPlayerDialog.getPoints().getText()));
                 gameEngine.addPlayer(newPlayer);
                 dialog.setVisible(false);
                 playerPanel.addNewPlayer(newPlayer);
