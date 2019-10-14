@@ -1,4 +1,4 @@
-package view;
+package view.player;
 
 import controller.CancelBetController;
 import controller.PlayerLeaveController;
@@ -41,6 +41,7 @@ public class PlayerView extends JPanel {
     }
 
     public void createBetItems(){
+        //TODO refactor to show bet type and bet all the time
         if(player.getBet() != 0){
             JLabel currentBet = new JLabel(Integer.toString(player.getBet()));
             JLabel currentBetLabel = new JLabel("Current Bet: ");

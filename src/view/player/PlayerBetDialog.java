@@ -1,4 +1,4 @@
-package view;
+package view.player;
 
 import controller.PlaceBetController;
 import model.enumeration.BetType;

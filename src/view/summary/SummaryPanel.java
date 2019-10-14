@@ -1,9 +1,9 @@
-package view;
+package view.summary;
 
-import model.enumeration.BetType;
 import model.interfaces.CoinPair;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
+import view.AppFrame;
 import view.interfaces.GameEngineCallback;
 
 import javax.swing.*;

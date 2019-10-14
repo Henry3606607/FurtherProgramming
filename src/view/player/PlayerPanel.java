@@ -1,7 +1,9 @@
-package view;
+package view.player;
 
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
+import view.AppFrame;
+import view.summary.SummaryPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,7 +52,7 @@ public class PlayerPanel extends JPanel {
     }
 
     public void createNewPlayer(){
-        new NewPlayerDialog(this, gameEngine);
+
         this.refresh();
     }
 

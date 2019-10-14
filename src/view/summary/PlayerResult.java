@@ -1,10 +1,11 @@
-package view;
+package view.summary;
 
 import model.enumeration.BetType;
 import model.interfaces.CoinPair;
 import model.interfaces.Player;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 public class PlayerResult extends JPanel {
     private Player player;
@@ -21,6 +22,7 @@ public class PlayerResult extends JPanel {
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         JLabel title = new JLabel(player.getPlayerName());
+        setBorder(new EmptyBorder(10, 0, 10, 0));
 
         result = new JLabel("Player has not spun");
         currentStatus = new JLabel("Playing...");

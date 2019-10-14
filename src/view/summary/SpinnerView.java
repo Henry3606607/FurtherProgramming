@@ -1,4 +1,4 @@
-package view;
+package view.summary;
 
 import model.CoinImpl;
 import model.enumeration.CoinFace;
@@ -6,7 +6,7 @@ import model.interfaces.Coin;
 import model.interfaces.CoinPair;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
-import view.interfaces.GameEngineCallback;
+import view.AppFrame;
 
 import javax.swing.*;
 import java.awt.*;

@@ -1,15 +1,11 @@
-package view;
+package view.player;
 
 import controller.AddNewPlayerController;
-import model.SimplePlayer;
 import model.interfaces.GameEngine;
-import model.interfaces.Player;
+import view.player.PlayerPanel;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 public class NewPlayerDialog {
 

@@ -1,8 +1,9 @@
-package view;
+package view.summary;
 
 import model.interfaces.CoinPair;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 
 public class SpinnerResult extends JPanel {
     private JLabel result;
@@ -17,6 +18,7 @@ public class SpinnerResult extends JPanel {
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         JLabel title = new JLabel("Game status");
+        setBorder(new EmptyBorder(10, 0, 10, 0));
 
         result = new JLabel("Spinner has not spun");
         currentStatus = new JLabel("Waiting for other players...");

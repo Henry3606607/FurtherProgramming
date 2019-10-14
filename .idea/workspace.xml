@@ -2,61 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d955e353-6af4-442e-8e49-9b94524be9ba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controller/AddPlayerButtonController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/summary/PlayerResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/summary/SpinnerResult.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/view/summary/SummaryPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/jquery/external/jquery/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/jquery/external/jquery/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/jquery/jquery-3.3.1.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/jquery/jquery-3.3.1.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/jquery/jquery-ui.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/jquery/jquery-ui.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/jquery/jquery-ui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/jquery/jquery-ui.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/jquery/jszip-utils/dist/jszip-utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/jquery/jszip-utils/dist/jszip-utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/jquery/jszip-utils/dist/jszip-utils.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/jquery/jszip-utils/dist/jszip-utils.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/jquery/jszip/dist/jszip.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/jquery/jszip/dist/jszip.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/jquery/jszip/dist/jszip.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/jquery/jszip/dist/jszip.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/META-INF/FurtherProgramming.kotlin_module" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/META-INF/FurtherProgramming.kotlin_module" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/AddNewPlayerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/AddNewPlayerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/CancelBetController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/CancelBetController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/PlaceBetController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/PlaceBetController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/PlayerLeaveController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/PlayerLeaveController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/SelectPlayerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/SelectPlayerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/SpinPlayerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/SpinPlayerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/SpinSpinnerController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/SpinSpinnerController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/SpinSpinnerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/SpinSpinnerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AddPlayerButton.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/GameEngineCallbackGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/GameEngineCallbackGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/NewPlayerDialog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/PlayerBetDialog.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/PlayerPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/PlayerView$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/PlayerView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/SpinnerView$CurrentView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/SpinnerView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/StatusBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/StatusBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/SummaryPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/ToolBar.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/AddNewPlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AddNewPlayerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/CancelBetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/CancelBetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/PlaceBetController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlaceBetController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/PlayerLeaveController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/PlayerLeaveController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SelectPlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SelectPlayerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SpinPlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SpinPlayerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/SpinSpinnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SpinSpinnerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/AddPlayerButton.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/AppFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/AppFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GameEngineCallbackGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameEngineCallbackGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/NewPlayerDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/player/NewPlayerDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/PlayerBetDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/player/PlayerBetDialog.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/PlayerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/player/PlayerPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/PlayerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/player/PlayerView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/SpinnerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/summary/SpinnerView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/StatusBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/StatusBar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/SummaryPanel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/ToolBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/toolbar/ToolBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/player/NewPlayerDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/player/NewPlayerDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/player/PlayerBetDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/player/PlayerBetDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/player/PlayerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/player/PlayerPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/player/PlayerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/player/PlayerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/summary/PlayerResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/summary/PlayerResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/summary/SpinnerResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/summary/SpinnerResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/summary/SpinnerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/summary/SpinnerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/summary/SummaryPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/summary/SummaryPanel.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -144,8 +97,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/view/player/PlayerView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="43" column="61" selection-start-line="43" selection-start-column="61" selection-end-line="43" selection-end-column="61" />
+            <state relative-caret-position="-17">
+              <caret line="25" column="31" lean-forward="true" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -365,12 +318,12 @@
       <workItem from="1570610215445" duration="10818000" />
       <workItem from="1570925343453" duration="749000" />
       <workItem from="1570951098553" duration="10462000" />
-      <workItem from="1571006513352" duration="6110000" />
+      <workItem from="1571006513352" duration="6346000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="6110000" />
+    <option name="totallyTimeSpent" value="6346000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -648,8 +601,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/player/PlayerView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="43" column="61" selection-start-line="43" selection-start-column="61" selection-end-line="43" selection-end-column="61" />
+        <state relative-caret-position="-17">
+          <caret line="25" column="31" lean-forward="true" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
         </state>
       </provider>
     </entry>
