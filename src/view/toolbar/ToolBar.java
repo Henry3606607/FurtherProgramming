@@ -43,10 +43,6 @@ public class ToolBar extends JToolBar {
             playerSelect.setSelectedIndex(-1);
         }
 
-
-
-
-
         spinSpinnerButton = new JButton("Spin Spinner");
         spinSpinnerButton.addActionListener(new SpinSpinnerController(gameEngine, appFrame));
 

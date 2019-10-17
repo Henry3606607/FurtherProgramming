@@ -33,7 +33,8 @@ public class PlayerBetDialog {
     public void render(){
         dialog = new JDialog(playerPanel.getAppFrame(), "Create Bet");
         this.createPanel();
-        dialog.setSize(1000, 200);
+        dialog.setSize(500, 200);
+        dialog.setLocationRelativeTo(null);
         dialog.add(panel);
         dialog.setVisible(true);
     }

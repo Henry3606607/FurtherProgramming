@@ -7,12 +7,13 @@ import model.interfaces.CoinPair;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
 import view.AppFrame;
+import view.CoinGamePanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class SpinnerView extends JPanel {
+public class SpinnerView extends CoinGamePanel {
     private Player currentPlayer;
     private Coin coin1 = new CoinImpl(1);
     private Coin coin2 = new CoinImpl(2);
@@ -33,7 +34,7 @@ public class SpinnerView extends JPanel {
     public void render(){
         this.clear();
 
-        setBorder(BorderFactory.createTitledBorder("Spinning for " + currentView.toString()));
+        setBorder(BorderFactory.createTitledBorder(getCurrentTitle()));
         setLayout(new GridLayout(1, 2));
 
 
@@ -43,6 +44,15 @@ public class SpinnerView extends JPanel {
         add(coin1Face);
         add(coin2Face);
         this.refresh();
+    }
+
+    public String getCurrentTitle(){
+        if(this.currentView.equals(CurrentView.SPINNER)){
+            return "Spinner Coins";
+        }
+        else{
+            return String.format("Spinning for %s", this.currentPlayer.getPlayerName());
+        }
     }
 
     public String getImage(CoinFace face){
@@ -89,15 +99,6 @@ public class SpinnerView extends JPanel {
         coin1Face.setIcon(getScaledImage(getImage(this.getCoin1().getFace())));
         coin2Face.setIcon(getScaledImage(getImage(this.getCoin2().getFace())));
         this.refresh();
-    }
-
-    public void clear(){
-        this.removeAll();
-    }
-
-    public void refresh(){
-        this.revalidate();
-        this.repaint();
     }
 
     public void updateCoin1(Player player, Coin coin){
@@ -163,6 +164,6 @@ public class SpinnerView extends JPanel {
 
     public void setCurrentView(CurrentView currentView) {
         this.currentView = currentView;
-        setBorder(BorderFactory.createTitledBorder(currentView.toString()));
+        setBorder(BorderFactory.createTitledBorder(getCurrentTitle()));
     }
 }

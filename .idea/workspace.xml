@@ -2,29 +2,39 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d955e353-6af4-442e-8e49-9b94524be9ba" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/controller/ResetGameController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/view/CoinGamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/META-INF/FurtherProgramming.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/AddNewPlayerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/AddNewPlayerController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/AddPlayerButtonController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/AddPlayerButtonController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/AppFrameResizeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/AppFrameResizeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/SpinSpinnerController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/SpinSpinnerController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/SpinSpinnerController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/controller/SpinSpinnerController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/AppFrame.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/ErrorDialog$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/ErrorDialog$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/ErrorDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/ErrorDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/GameEngineCallbackGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/GameEngineCallbackGUI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/StatusBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/StatusBar.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/player/NewPlayerDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/player/NewPlayerDialog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/player/PlayerBetDialog.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/player/PlayerBetDialog.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/player/PlayerPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/player/PlayerPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/player/PlayerView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/player/PlayerView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/player/PlayerView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/player/PlayerView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/summary/PlayerResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/summary/PlayerResult.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/summary/SpinnerResult.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/summary/SpinnerResult.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/summary/SpinnerView$CurrentView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/summary/SpinnerView$CurrentView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/summary/SpinnerView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/summary/SpinnerView.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/summary/SummaryPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/summary/SummaryPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/FurtherProgramming/view/toolbar/ToolBar.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/FurtherProgramming/view/toolbar/ToolBar.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/AddNewPlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AddNewPlayerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/AddPlayerButtonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AddPlayerButtonController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/AppFrameResizeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/AppFrameResizeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controller/SpinSpinnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/SpinSpinnerController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/AppFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/AppFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/ErrorDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/ErrorDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/GameEngineCallbackGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameEngineCallbackGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/StatusBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/StatusBar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/player/NewPlayerDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/player/NewPlayerDialog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/player/PlayerBetDialog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/player/PlayerBetDialog.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/player/PlayerPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/player/PlayerPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/player/PlayerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/player/PlayerView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/summary/PlayerResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/summary/PlayerResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/summary/SpinnerResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/summary/SpinnerResult.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/summary/SpinnerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/summary/SpinnerView.java" afterDir="false" />
@@ -164,7 +174,7 @@
       <workItem from="1570951098553" duration="10462000" />
       <workItem from="1571006513352" duration="6346000" />
       <workItem from="1571048230122" duration="4684000" />
-      <workItem from="1571302422846" duration="3311000" />
+      <workItem from="1571302422846" duration="7172000" />
     </task>
     <servers />
   </component>
@@ -207,13 +217,8 @@
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/view/AppFrame.java</url>
-          <line>160</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/view/summary/SpinnerView.java</url>
-          <line>88</line>
+          <line>98</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>

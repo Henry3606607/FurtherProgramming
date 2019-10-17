@@ -6,6 +6,7 @@ import model.enumeration.BetType;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
 import view.player.PlayerPanel;
+import view.summary.PlayerResult;
 import view.summary.SpinnerView;
 import view.summary.SummaryPanel;
 import view.toolbar.ToolBar;
@@ -14,8 +15,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 
 public class AppFrame extends JFrame {
     private GameEngine gameEngine;
@@ -38,16 +37,12 @@ public class AppFrame extends JFrame {
         c = getContentPane();
         c.setLayout(new GridBagLayout());
 
-
-
         this.gameEngine = gameEngine;
 
         gameEngine.addPlayer(new SimplePlayer(Integer.toString(getNextIdValue()), "The Coin Master", 1000));
         gameEngine.addPlayer(new SimplePlayer(Integer.toString(getNextIdValue()), "The Loser", 750));
 
         this.buildFrame();
-
-        //TODO remove clear and refresh from components
     }
 
     public void buildFrame() {
@@ -63,7 +58,6 @@ public class AppFrame extends JFrame {
         summaryPanel = new SummaryPanel(gameEngine, this);
         playerPanel = new PlayerPanel(gameEngine, this, summaryPanel);
         toolBar = new ToolBar(gameEngine, AppFrame.this);
-
 
         setVisible(true);
 
@@ -158,7 +152,7 @@ public class AppFrame extends JFrame {
 
     public void canSpinnerSpin() {
         for (Player p : gameEngine.getAllPlayers()) {
-            if (p.getBetType().equals(BetType.NO_BET) || p.getResult() == null) {
+            if (p.getBetType().equals(BetType.NO_BET)) {
                 return;
             }
         }
@@ -170,6 +164,7 @@ public class AppFrame extends JFrame {
         if (getSelectedPlayer() != null && player.getPlayerId().equals(getSelectedPlayer().getPlayerId())) {
             statusBar.betPlaced(player);
         }
+        canSpinnerSpin();
     }
 
     public void spinnerSpinning() {
@@ -181,6 +176,7 @@ public class AppFrame extends JFrame {
     public void resetGame(){
         summaryPanel.resetGame();
         playerPanel.resetPlayers();
+        toolBar.spinnerFinished();
         this.refresh();
     }
 

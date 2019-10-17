@@ -3,13 +3,14 @@ package view.player;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
 import view.AppFrame;
+import view.CoinGamePanel;
 import view.summary.SummaryPanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class PlayerPanel extends JPanel {
+public class PlayerPanel extends CoinGamePanel {
     private GameEngine gameEngine;
     private AppFrame parent;
     private SummaryPanel summaryPanel;
@@ -75,15 +76,6 @@ public class PlayerPanel extends JPanel {
         getAppFrame().newPlayerAdded(player);
         summaryPanel.playerJoined(player);
         this.refresh();
-    }
-
-    public void clear(){
-        this.removeAll();
-    }
-
-    public void refresh(){
-        this.revalidate();
-        this.repaint();
     }
 
     public AppFrame getAppFrame(){

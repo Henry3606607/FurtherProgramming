@@ -26,16 +26,13 @@ public class SpinSpinnerController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (checkBets()) {
-            if (checkPlayerSpins()) {
-                new Thread() {
-                    @Override
-                    public void run() {
-                        gameEngine.spinSpinner(100, 1000, 100, 50, 500, 50);
-                    }
-                }.start();
-                appFrame.spinnerSpinning();
-
-            }
+            new Thread() {
+                @Override
+                public void run() {
+                    gameEngine.spinSpinner(100, 1000, 100, 50, 500, 50);
+                }
+            }.start();
+            appFrame.spinnerSpinning();
         }
     }
 
@@ -51,17 +48,6 @@ public class SpinSpinnerController implements ActionListener {
                 } else if (input == JOptionPane.YES_OPTION) {
                     return true;
                 }
-            }
-        }
-        return true;
-    }
-
-    public boolean checkPlayerSpins() {
-        for (Player player : players) {
-            if (player.getResult() == null && player.getBet() > 0) {
-                JOptionPane.showMessageDialog(null, "Not all players have spun",
-                        "Missing spins", JOptionPane.ERROR_MESSAGE);
-                return false;
             }
         }
         return true;

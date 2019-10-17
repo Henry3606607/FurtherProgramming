@@ -4,13 +4,14 @@ import controller.CancelBetController;
 import controller.PlayerLeaveController;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
+import view.CoinGamePanel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PlayerView extends JPanel {
+public class PlayerView extends CoinGamePanel {
     private Player player;
     GameEngine gameEngine;
     PlayerPanel playerPanel;
@@ -74,17 +75,7 @@ public class PlayerView extends JPanel {
     }
 
     public void cancelBet(){
-        playerPanel.getSummaryPanel().cancelBet(player);
         this.renderPlayer();
-    }
-
-    public void clear(){
-        this.removeAll();
-    }
-
-    public void refresh(){
-        this.revalidate();
-        this.repaint();
     }
 
     public Player getPlayer() {

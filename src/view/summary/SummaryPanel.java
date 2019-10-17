@@ -4,6 +4,7 @@ import model.interfaces.CoinPair;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
 import view.AppFrame;
+import view.CoinGamePanel;
 import view.interfaces.GameEngineCallback;
 
 import javax.swing.*;
@@ -11,7 +12,7 @@ import javax.swing.border.Border;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class SummaryPanel extends JPanel {
+public class SummaryPanel extends CoinGamePanel {
     GameEngine gameEngine;
     private GameEngineCallback callback;
     private AppFrame parent;
@@ -52,19 +53,6 @@ public class SummaryPanel extends JPanel {
         this.refresh();
     }
 
-    public void clear() {
-        this.removeAll();
-    }
-
-    public void refresh() {
-        this.revalidate();
-        this.repaint();
-    }
-
-    public void appendMessage(String message) {
-        //textArea.append(message + "\n");
-    }
-
     public void playerJoined(Player player) {
         PlayerResult playerResult = new PlayerResult(player);
         playerResults.add(playerResult);
@@ -88,15 +76,11 @@ public class SummaryPanel extends JPanel {
 
     }
 
-    public void cancelBet(Player player) {
-        appendMessage(String.format("%s has cancelled their bet", player.getPlayerName()));
-    }
-
     public void finalResults(ArrayList<Player> finalPlayers, CoinPair spinnerCoins) {
         spinnerResult.displayResult(spinnerCoins);
         for (PlayerResult playerResult : playerResults) {
             for (Player finalPlayer : finalPlayers) {
-                if (finalPlayer.getPlayerId().equals(playerResult.getPlayer().getPlayerId())) {
+                if (finalPlayer.getPlayerId().equals(playerResult.getPlayer().getPlayerId()) && playerResult.getPlayerStatus().equals(PlayerResult.PlayerStatus.READY)) {
                     playerResult.displayWinOrLoss(spinnerCoins);
                 }
             }
@@ -108,6 +92,9 @@ public class SummaryPanel extends JPanel {
         PlayerResult playerResult = findPlayer(player);
         if (playerResult != null) {
             playerResult.displayResult();
+            if(spinnerResult.getSpinnerStatus().equals(SpinnerResult.SpinnerStatus.READY)){
+                playerResult.displayWinOrLoss(spinnerResult.getLastResult());
+            }
         }
         this.refresh();
     }

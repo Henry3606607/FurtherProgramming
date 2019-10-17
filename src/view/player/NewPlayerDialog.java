@@ -26,7 +26,8 @@ public class NewPlayerDialog {
     public void render(){
         dialog = new JDialog(appFrame, "New Player");
         this.createPanel();
-        dialog.setSize(1000, 200);
+        dialog.setSize(500, 200);
+        dialog.setLocationRelativeTo(null);
         dialog.add(panel);
         dialog.setVisible(true);
     }

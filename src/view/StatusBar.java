@@ -5,7 +5,7 @@ import model.interfaces.Player;
 import javax.swing.*;
 import java.awt.*;
 
-public class StatusBar extends JPanel {
+public class StatusBar extends CoinGamePanel {
     private JLabel status1;
     private JLabel status2;
     private JLabel status3;

@@ -22,7 +22,8 @@ public class ErrorDialog {
     public void render(){
         dialog = new JDialog(parent, "Error");
         this.createPanel();
-        dialog.setSize(1000, 200);
+        dialog.setLocationRelativeTo(null);
+        dialog.setSize(500, 200);
         dialog.add(panel);
         dialog.setVisible(true);
     }

@@ -3,21 +3,27 @@ package view.summary;
 import model.enumeration.BetType;
 import model.interfaces.CoinPair;
 import model.interfaces.Player;
+import view.CoinGamePanel;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class PlayerResult extends JPanel {
+public class PlayerResult extends CoinGamePanel {
     private Player player;
     private JLabel result;
     private JLabel currentStatus;
+    private PlayerStatus playerStatus = PlayerStatus.PLAYING;
 
-    public PlayerResult(Player player){
+    public enum PlayerStatus {
+        PLAYING, SPINNING, READY
+    }
+
+    public PlayerResult(Player player) {
         this.player = player;
         this.render();
     }
 
-    public void render(){
+    public void render() {
         this.clear();
 
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -34,54 +40,54 @@ public class PlayerResult extends JPanel {
         this.refresh();
     }
 
-    public void displayResult(){
+    public void displayResult() {
         result.setText(String.format("Coin 1: %s, Coin 2: %s", player.getResult().getCoin1().getFace(), player.getResult().getCoin2().getFace()));
-        currentStatus.setText("Ready!");
+        this.setStatusAndLabel(PlayerStatus.READY);
     }
 
-    public void spinning(){
-        currentStatus.setText("Spinning...");
+    public void spinning() {
+        this.setStatusAndLabel(PlayerStatus.SPINNING);
         this.refresh();
     }
 
-    public void displayWinOrLoss(CoinPair spinnerResult){
-        if(this.didPlayerWin(spinnerResult)){
-            currentStatus.setText("WINNER");
-        }
-        else{
-            currentStatus.setText("LOSER");
+    public void setStatusAndLabel(PlayerStatus status) {
+        this.playerStatus = status;
+        if (status.equals(PlayerStatus.PLAYING)) {
+            currentStatus.setText("Playing...");
+        } else if (status.equals(PlayerStatus.SPINNING)) {
+            currentStatus.setText("Spinning...");
+        } else if (status.equals(PlayerStatus.READY)) {
+            currentStatus.setText("Ready!");
         }
     }
 
-    public void reset(){
+    public void displayWinOrLoss(CoinPair spinnerResult) {
+        if (player.getResult() != null) {
+            if (this.didPlayerWin(spinnerResult)) {
+                currentStatus.setText("WINNER");
+            } else {
+                currentStatus.setText("LOSER");
+            }
+        }
+    }
+
+    public void reset() {
         result.setText("Player has not spun");
-        currentStatus.setText("Playing...");
+        this.setStatusAndLabel(PlayerStatus.PLAYING);
     }
 
-
-    public void clear(){
-        this.removeAll();
-    }
-
-    public void refresh(){
-        this.revalidate();
-        this.repaint();
-    }
-
-    public boolean didPlayerWin(CoinPair spinnerResult){
-        if(player.getBetType().equals(BetType.BOTH)){
-            if(spinnerResult.getCoin1().equals(player.getResult().getCoin1())
-            && spinnerResult.getCoin2().equals(player.getResult().getCoin2())){
+    public boolean didPlayerWin(CoinPair spinnerResult) {
+        if (player.getBetType().equals(BetType.BOTH)) {
+            if (spinnerResult.getCoin1().equals(player.getResult().getCoin1())
+                    && spinnerResult.getCoin2().equals(player.getResult().getCoin2())) {
                 return true;
             }
-        }
-        else if(player.getBetType().equals(BetType.COIN1)){
-            if(spinnerResult.getCoin1().equals(player.getResult().getCoin1())){
+        } else if (player.getBetType().equals(BetType.COIN1)) {
+            if (spinnerResult.getCoin1().equals(player.getResult().getCoin1())) {
                 return true;
             }
-        }
-        else if(player.getBetType().equals(BetType.COIN2)){
-            if(spinnerResult.getCoin2().equals(player.getResult().getCoin2())){
+        } else if (player.getBetType().equals(BetType.COIN2)) {
+            if (spinnerResult.getCoin2().equals(player.getResult().getCoin2())) {
                 return true;
             }
         }
@@ -94,5 +100,13 @@ public class PlayerResult extends JPanel {
 
     public void setPlayer(Player player) {
         this.player = player;
+    }
+
+    public PlayerStatus getPlayerStatus() {
+        return playerStatus;
+    }
+
+    public void setPlayerStatus(PlayerStatus playerStatus) {
+        this.playerStatus = playerStatus;
     }
 }

@@ -18,10 +18,9 @@ public class AppFrameResizeController implements ComponentListener {
 
     @Override
     public void componentResized(ComponentEvent e) {
-        AppFrame test = (AppFrame) e.getSource();
-        System.out.println(test.getSize());
-        spinnerView.resizeCoins(test.getSize());
-        toolBar.resizeToolbar(test.getSize());
+        AppFrame a = (AppFrame) e.getSource();
+        spinnerView.resizeCoins(a.getSize());
+        toolBar.resizeToolbar(a.getSize());
     }
 
     @Override

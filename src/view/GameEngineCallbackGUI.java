@@ -45,7 +45,6 @@ public class GameEngineCallbackGUI implements GameEngineCallback {
     @Override
     public void playerResult(Player player, CoinPair coinPair, GameEngine engine) {
         summaryPanel.playerResult(player);
-        this.appFrame.canSpinnerSpin();
     }
 
     @Override
