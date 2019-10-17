@@ -39,9 +39,6 @@ public class AppFrame extends JFrame {
 
         this.gameEngine = gameEngine;
 
-        gameEngine.addPlayer(new SimplePlayer(Integer.toString(getNextIdValue()), "The Coin Master", 1000));
-        gameEngine.addPlayer(new SimplePlayer(Integer.toString(getNextIdValue()), "The Loser", 750));
-
         this.buildFrame();
     }
 
