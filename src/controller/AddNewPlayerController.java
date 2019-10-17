@@ -3,6 +3,7 @@ package controller;
 import model.SimplePlayer;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
+import view.AppFrame;
 import view.ErrorDialog;
 import view.player.NewPlayerDialog;
 import view.player.PlayerPanel;
@@ -15,14 +16,14 @@ import java.util.ArrayList;
 public class AddNewPlayerController implements ActionListener {
     private GameEngine gameEngine;
     private NewPlayerDialog newPlayerDialog;
-    private PlayerPanel playerPanel;
     private JDialog dialog;
+    private AppFrame appframe;
 
 
-    public AddNewPlayerController(GameEngine gameEngine, NewPlayerDialog newPlayerDialog, PlayerPanel playerPanel, JDialog dialog) {
+    public AddNewPlayerController(GameEngine gameEngine, NewPlayerDialog newPlayerDialog, AppFrame appframe, JDialog dialog) {
         this.gameEngine = gameEngine;
         this.newPlayerDialog = newPlayerDialog;
-        this.playerPanel = playerPanel;
+        this.appframe = appframe;
         this.dialog = dialog;
     }
 
@@ -37,16 +38,16 @@ public class AddNewPlayerController implements ActionListener {
         }
         if (errors.isEmpty()) {
             try {
-                Player newPlayer = new SimplePlayer(Integer.toString(gameEngine.getAllPlayers().size() + 1), newPlayerDialog.getName().getText(), Integer.valueOf(newPlayerDialog.getPoints().getText()));
+                Player newPlayer = new SimplePlayer(Integer.toString(appframe.getNextIdValue()), newPlayerDialog.getName().getText(), Integer.valueOf(newPlayerDialog.getPoints().getText()));
                 gameEngine.addPlayer(newPlayer);
                 dialog.setVisible(false);
-                playerPanel.addNewPlayer(newPlayer);
+                appframe.getPlayerPanel().addNewPlayer(newPlayer);
             } catch (NumberFormatException numberFormat) {
                 errors.add("Points must be of type Integer");
-                ErrorDialog errorDialog = new ErrorDialog(playerPanel.getAppFrame(), errors);
+                ErrorDialog errorDialog = new ErrorDialog(appframe.getPlayerPanel().getAppFrame(), errors);
             }
         } else {
-            ErrorDialog errorDialog = new ErrorDialog(playerPanel.getAppFrame(), errors);
+            ErrorDialog errorDialog = new ErrorDialog(appframe.getPlayerPanel().getAppFrame(), errors);
         }
 
     }

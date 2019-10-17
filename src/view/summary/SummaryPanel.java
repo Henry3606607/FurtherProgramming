@@ -7,6 +7,7 @@ import view.AppFrame;
 import view.interfaces.GameEngineCallback;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -27,7 +28,7 @@ public class SummaryPanel extends JPanel {
     public void render() {
         this.clear();
 
-        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        setLayout(new BorderLayout());
         JLabel title = new JLabel("Summary");
 
         allPlayersPanel = new JPanel();
@@ -126,6 +127,13 @@ public class SummaryPanel extends JPanel {
             }
         }
         return null;
+    }
+
+    public void resetGame(){
+        spinnerResult.reset();
+        for (PlayerResult playerResult : playerResults) {
+            playerResult.reset();
+        }
     }
 
     public void spinnerSpinning(){

@@ -19,7 +19,7 @@ import java.awt.event.ComponentEvent;
 
 public class AppFrame extends JFrame {
     private GameEngine gameEngine;
-    private Container c = getContentPane();
+    private Container c;
     private SpinnerView spinnerView;
     private PlayerPanel playerPanel;
     private JMenuBar menuBar;
@@ -29,28 +29,32 @@ public class AppFrame extends JFrame {
     private ToolBar toolBar;
     private SummaryPanel summaryPanel;
     private Player selectedPlayer;
-
-
+    private int nextIdValue = 1;
 
     private String currentView = "player";
 
-    public AppFrame(GameEngine gameEngine)
-    {
+    public AppFrame(GameEngine gameEngine) {
         super("Assignment 2");
+        c = getContentPane();
+        c.setLayout(new GridBagLayout());
+
+
+
         this.gameEngine = gameEngine;
 
-        gameEngine.addPlayer(new SimplePlayer("1", "The Coin Master", 1000));
-        gameEngine.addPlayer(new SimplePlayer("2", "The Loser", 750));
+        gameEngine.addPlayer(new SimplePlayer(Integer.toString(getNextIdValue()), "The Coin Master", 1000));
+        gameEngine.addPlayer(new SimplePlayer(Integer.toString(getNextIdValue()), "The Loser", 750));
 
         this.buildFrame();
 
         //TODO remove clear and refresh from components
     }
 
-    public void buildFrame(){
+    public void buildFrame() {
 
 
         setBounds(100, 100, 640, 480);
+        setMinimumSize(new Dimension(400, 400));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
@@ -66,7 +70,7 @@ public class AppFrame extends JFrame {
         gameEngine.addGameEngineCallback(new GameEngineCallbackGUI(spinnerView, summaryPanel, this));
 
         render();
-        this.addComponentListener(new AppFrameResizeController(spinnerView));
+        this.addComponentListener(new AppFrameResizeController(spinnerView, toolBar));
     }
 
     @Override
@@ -74,15 +78,14 @@ public class AppFrame extends JFrame {
         System.out.println("setSize");
     }
 
-    public void render(){
+    public void render() {
         this.clear();
         this.createMenu();
         c.add(summaryPanel, BorderLayout.EAST);
         c.add(toolBar, BorderLayout.NORTH);
-        if(this.currentView.equals("player")){
+        if (this.currentView.equals("player")) {
             c.add(playerPanel, BorderLayout.WEST);
-        }
-        else{
+        } else {
             c.add(spinnerView, BorderLayout.WEST);
         }
 
@@ -91,12 +94,12 @@ public class AppFrame extends JFrame {
         this.refresh();
     }
 
-    public void clear(){
+    public void clear() {
         this.getContentPane().removeAll();
         c = this.getContentPane();
     }
 
-    public void refresh(){
+    public void refresh() {
         c.revalidate();
         c.repaint();
     }
@@ -109,13 +112,13 @@ public class AppFrame extends JFrame {
         this.currentView = currentView;
     }
 
-    public void selectPlayer(Player player){
+    public void selectPlayer(Player player) {
         setSelectedPlayer(player);
         spinnerView.switchPlayer(player);
         toolBar.isSpinPlayerButtonDisabled(false);
     }
 
-    public void createMenu(){
+    public void createMenu() {
         menuBar = new JMenuBar();
         menu = new JMenu("Menu");
         playerViewItem = new JMenuItem("Player View");
@@ -153,26 +156,32 @@ public class AppFrame extends JFrame {
         spinnerView.setCurrentPlayer(selectedPlayer);
     }
 
-    public void canSpinnerSpin(){
+    public void canSpinnerSpin() {
         for (Player p : gameEngine.getAllPlayers()) {
-           if(p.getBetType().equals(BetType.NO_BET) || p.getResult() == null){
-              return;
-           }
+            if (p.getBetType().equals(BetType.NO_BET) || p.getResult() == null) {
+                return;
+            }
         }
         toolBar.autoSpin();
     }
 
-    public void newBetPlaced(Player player){
+    public void newBetPlaced(Player player) {
         playerPanel.addNewBet(player);
-        if(getSelectedPlayer() != null && player.getPlayerId().equals(getSelectedPlayer().getPlayerId())){
+        if (getSelectedPlayer() != null && player.getPlayerId().equals(getSelectedPlayer().getPlayerId())) {
             statusBar.betPlaced(player);
         }
     }
 
-    public void spinnerSpinning(){
+    public void spinnerSpinning() {
         toolBar.spinnerSpinning();
         summaryPanel.spinnerSpinning();
         spinnerView.switchToSpinnerView();
+    }
+
+    public void resetGame(){
+        summaryPanel.resetGame();
+        playerPanel.resetPlayers();
+        this.refresh();
     }
 
     public PlayerPanel getPlayerPanel() {
@@ -183,7 +192,7 @@ public class AppFrame extends JFrame {
         this.playerPanel = playerPanel;
     }
 
-    public void newPlayerAdded(Player player){
+    public void newPlayerAdded(Player player) {
         this.toolBar.addNewPlayer(player);
     }
 
@@ -209,5 +218,13 @@ public class AppFrame extends JFrame {
 
     public void setSummaryPanel(SummaryPanel summaryPanel) {
         this.summaryPanel = summaryPanel;
+    }
+
+    public int getNextIdValue() {
+        return nextIdValue++;
+    }
+
+    public void setNextIdValue(int nextIdValue) {
+        this.nextIdValue = nextIdValue;
     }
 }

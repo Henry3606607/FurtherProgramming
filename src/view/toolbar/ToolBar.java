@@ -1,14 +1,12 @@
 package view.toolbar;
 
-import controller.AddPlayerButtonController;
-import controller.SelectPlayerController;
-import controller.SpinPlayerController;
-import controller.SpinSpinnerController;
+import controller.*;
 import model.interfaces.GameEngine;
 import model.interfaces.Player;
 import view.AppFrame;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class ToolBar extends JToolBar {
     GameEngine gameEngine;
@@ -16,6 +14,8 @@ public class ToolBar extends JToolBar {
     private JComboBox playerSelect;
     private JButton spinPlayer = new JButton("Spin Player");
     private JButton spinSpinnerButton;
+    private JButton resetGame;
+    private JPanel mainPanel;
 
     public ToolBar(GameEngine engine, AppFrame appFrame) {
         this.gameEngine = engine;
@@ -26,7 +26,8 @@ public class ToolBar extends JToolBar {
     public void renderToolbar() {
         this.clear();
 
-        JPanel p = new JPanel();
+        mainPanel = new JPanel();
+        mainPanel.setLayout(new GridLayout(1, 5));
 
         playerSelect = new JComboBox();
 
@@ -43,27 +44,41 @@ public class ToolBar extends JToolBar {
         }
 
 
-        add(playerSelect);
-        add(newPlayerButton());
+
 
 
         spinSpinnerButton = new JButton("Spin Spinner");
         spinSpinnerButton.addActionListener(new SpinSpinnerController(gameEngine, appFrame));
 
+        resetGame = new JButton("Reset Game");
+        resetGame.addActionListener(new ResetGameController(gameEngine, appFrame));
+
         spinPlayer.addActionListener(new SpinPlayerController(gameEngine, appFrame));
         spinPlayer.setEnabled(appFrame.getSelectedPlayer() != null);
 
-        p.add(spinPlayer);
-        p.add(spinSpinnerButton);
-        add(p);
+        mainPanel.add(playerSelect);
+        mainPanel.add(newPlayerButton());
+        mainPanel.add(spinPlayer);
+        mainPanel.add(spinSpinnerButton);
+        mainPanel.add(resetGame);
+        add(mainPanel);
 
         this.refresh();
     }
 
     public JButton newPlayerButton() {
         JButton addPlayerButton = new JButton("Add Player");
-        addPlayerButton.addActionListener(new AddPlayerButtonController(gameEngine, appFrame.getPlayerPanel()));
+        addPlayerButton.addActionListener(new AddPlayerButtonController(gameEngine, appFrame));
         return addPlayerButton;
+    }
+
+    public void resizeToolbar(Dimension size){
+        if(size.getWidth() < 640){
+            mainPanel.setLayout(new GridLayout(2, 3));
+        }
+        else{
+            mainPanel.setLayout(new GridLayout(1, 5));
+        }
     }
 
     public void clear() {

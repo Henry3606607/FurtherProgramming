@@ -20,10 +20,6 @@ public class SpinnerView extends JPanel {
     private JLabel coin2Face;
     private Dimension mainFrameDimensions = new Dimension(100, 100);
 
-
-    private ImageIcon heads = getScaledImage(".img/heads.png");
-    private ImageIcon tails = getScaledImage(".img/tails.png");
-
     private CurrentView currentView = CurrentView.SPINNER;
 
     public enum CurrentView{
@@ -41,8 +37,8 @@ public class SpinnerView extends JPanel {
         setLayout(new GridLayout(1, 2));
 
 
-        coin1Face = new JLabel(getImage(this.getCoin1().getFace()));
-        coin2Face = new JLabel(getImage(this.getCoin2().getFace()));
+        coin1Face = new JLabel(getScaledImage(getImage(this.getCoin1().getFace())));
+        coin2Face = new JLabel(getScaledImage(getImage(this.getCoin2().getFace())));
 
         add(coin1Face);
         add(coin2Face);
@@ -59,9 +55,10 @@ public class SpinnerView extends JPanel {
     private ImageIcon getScaledImage(String imageUrl){
         ImageIcon imageIcon = new ImageIcon(imageUrl);
         Image image = imageIcon.getImage();
-        int width = (int) mainFrameDimensions.getWidth() /4;
-        int height = (int) mainFrameDimensions.getHeight()/4;
-        Image newimg = image.getScaledInstance(width * 420 / 420, height * 420 / 420,  java.awt.Image.SCALE_SMOOTH);
+        int width = (int) mainFrameDimensions.getWidth() / 3;
+        int height = (int) mainFrameDimensions.getHeight() / 3;
+        int ratio = width / height;
+        Image newimg = image.getScaledInstance(ratio > (420 * 420) ? 420 * width / 420 : width, ratio > (420 * 420) ? height : 420 * width/420,  java.awt.Image.SCALE_SMOOTH);
         return new ImageIcon(newimg);
     }
 

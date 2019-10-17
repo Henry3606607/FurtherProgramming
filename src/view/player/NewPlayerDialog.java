@@ -2,6 +2,7 @@ package view.player;
 
 import controller.AddNewPlayerController;
 import model.interfaces.GameEngine;
+import view.AppFrame;
 import view.player.PlayerPanel;
 
 import javax.swing.*;
@@ -9,21 +10,21 @@ import java.awt.*;
 
 public class NewPlayerDialog {
 
-    private PlayerPanel playerPanel;
+    private AppFrame appFrame;
     private GameEngine gameEngine;
     private JDialog dialog;
     private JPanel panel;
     private JTextField points;
     private JTextField name;
 
-    public NewPlayerDialog(PlayerPanel playerPanel, GameEngine gameEngine) {
+    public NewPlayerDialog(AppFrame appFrame, GameEngine gameEngine) {
         this.gameEngine = gameEngine;
-        this.playerPanel = playerPanel;
+        this.appFrame = appFrame;
         this.render();
     }
 
     public void render(){
-        dialog = new JDialog(playerPanel.getAppFrame(), "New Player");
+        dialog = new JDialog(appFrame, "New Player");
         this.createPanel();
         dialog.setSize(1000, 200);
         dialog.add(panel);
@@ -47,7 +48,7 @@ public class NewPlayerDialog {
         GridBagConstraints gc = new GridBagConstraints();
 
         JButton createPlayer = new JButton("Add");
-        createPlayer.addActionListener(new AddNewPlayerController(gameEngine, this, playerPanel, dialog));
+        createPlayer.addActionListener(new AddNewPlayerController(gameEngine, this, appFrame, dialog));
 
         panel.add(createPlayer);
     }

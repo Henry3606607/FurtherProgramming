@@ -53,6 +53,12 @@ public class PlayerResult extends JPanel {
         }
     }
 
+    public void reset(){
+        result.setText("Player has not spun");
+        currentStatus.setText("Playing...");
+    }
+
+
     public void clear(){
         this.removeAll();
     }

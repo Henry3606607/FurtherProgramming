@@ -40,6 +40,11 @@ public class SpinnerResult extends JPanel {
         this.refresh();
     }
 
+    public void reset(){
+        result.setText("Spinner has not spun");
+        currentStatus.setText("Waiting for other players...");
+    }
+
     public void clear(){
         this.removeAll();
     }

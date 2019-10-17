@@ -43,6 +43,12 @@ public class PlayerPanel extends JPanel {
         this.refresh();
     }
 
+    public void resetPlayers(){
+        for (PlayerView playerView : playerViews) {
+            playerView.renderPlayer();
+        }
+    }
+
     public void createAllPlayers(){
         for (Player p : gameEngine.getAllPlayers()) {
             PlayerView pView = new PlayerView(p, gameEngine, this);
