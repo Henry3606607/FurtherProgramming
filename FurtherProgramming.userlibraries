@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <eclipse-userlibraries>
   <library name="Validator">
-    <archive path="C:/Users/footy/Documents/GitHub/FurtherProgramming/lib/Validator.jar" />
+    <archive path="C:/Users/footy/Documents/FurtherProgramming/lib/Validator.jar" />
   </library>
   <library name="docs">
-    <archive path="C:/Users/footy/Documents/GitHub/FurtherProgramming/docs/type-search-index.zip" />
-    <archive path="C:/Users/footy/Documents/GitHub/FurtherProgramming/docs/member-search-index.zip" />
-    <archive path="C:/Users/footy/Documents/GitHub/FurtherProgramming/docs/package-search-index.zip" />
+    <archive path="C:/Users/footy/Documents/FurtherProgramming/docs/type-search-index.zip" />
+    <archive path="C:/Users/footy/Documents/FurtherProgramming/docs/member-search-index.zip" />
+    <archive path="C:/Users/footy/Documents/FurtherProgramming/docs/package-search-index.zip" />
   </library>
 </eclipse-userlibraries>
 

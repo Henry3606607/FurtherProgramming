@@ -39,7 +39,7 @@ public class PlaceBetController implements ActionListener {
     }
 
         public boolean isBetValid (Player player, String betText, BetType type){
-            if (!betText.isBlank()) {
+            if (!betText.isEmpty()) {
                 int bet;
                 try {
                     bet = Integer.valueOf(betText);

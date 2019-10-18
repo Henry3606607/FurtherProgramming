@@ -30,10 +30,10 @@ public class AddNewPlayerController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         ArrayList<String> errors = new ArrayList<>();
-        if (newPlayerDialog.getName().getText().isBlank()) {
+        if (newPlayerDialog.getName().getText().isEmpty()) {
             errors.add("Name is required");
         }
-        if (newPlayerDialog.getPoints().getText().isBlank()) {
+        if (newPlayerDialog.getPoints().getText().isEmpty()) {
             errors.add("Points is required");
         }
         if (errors.isEmpty()) {
